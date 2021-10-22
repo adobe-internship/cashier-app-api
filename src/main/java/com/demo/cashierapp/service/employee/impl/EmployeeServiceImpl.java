@@ -18,12 +18,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     private final EmployeeRepository employeeRepository;
 
     @Override
-    public boolean usernameExists(String username) {
-        Optional<Employee> employeeOptional = employeeRepository.findEmployeeByUsername(username);
-        return employeeOptional.isPresent();
-    }
-
-    @Override
     public Employee create(CreateEmployeeParams createEmployeeParams) {
         final String salt = BCrypt.gensalt(10);
         Employee newEmployee = new Employee();
@@ -51,5 +45,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public void deleteByUsername(String username) {
 
+    }
+
+    @Override
+    public boolean usernameExists(String username) {
+        Optional<Employee> employeeOptional = employeeRepository.findEmployeeByUsername(username);
+        return employeeOptional.isPresent();
     }
 }

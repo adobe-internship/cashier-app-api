@@ -1,12 +1,13 @@
 package com.demo.cashierapp.model.service.product;
 
+import com.demo.cashierapp.entity.Supplier;
 import lombok.Getter;
 
 import java.math.BigDecimal;
 
 @Getter
 public class CreateProductParams {
-    private final String supplier_uid;
+    private final Supplier supplier;
     private final String brand;
     private final String barcode;
     private final String productName;
@@ -17,14 +18,14 @@ public class CreateProductParams {
     private final BigDecimal salePrice;
 
     public CreateProductParams(
-            String supplier_uid, String brand, String barcode, String productName,
+            Supplier supplier, String brand, String barcode, String productName,
             String productDescription, int quantity, String unitOfMeasurement,
             BigDecimal costPrice, BigDecimal salePrice
     ) {
         if (barcode == null) {
             throw new IllegalArgumentException("The barcode should not be null");
         }
-        this.supplier_uid = supplier_uid;
+        this.supplier = supplier;
         this.brand = brand;
         this.barcode = barcode;
         this.productName = productName;
