@@ -1,5 +1,6 @@
 package com.demo.cashierapp.model.apiService.product;
 
+import com.demo.cashierapp.entity.Supplier;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +13,7 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 public class BaseProduct {
-    private String supplier_uid;
+    private Supplier supplier;
     private String brand;
     private String barcode;
     private String productName;
