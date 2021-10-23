@@ -24,4 +24,9 @@ public class ProductController {
     public List<ProductDetailsResponseModel> getAll() {
         return productApiService.getAll();
     }
+
+    @DeleteMapping("/delete/{barcode}")
+    public void deleteByBarcode(@PathVariable String barcode) {
+        productApiService.deleteByBarcode(barcode);
+    }
 }

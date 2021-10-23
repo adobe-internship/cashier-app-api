@@ -1,6 +1,5 @@
 package com.demo.cashierapp.service.supplier.impl;
 
-import com.demo.cashierapp.entity.Employee;
 import com.demo.cashierapp.entity.Supplier;
 import com.demo.cashierapp.model.service.supplier.CreateSupplierParams;
 import com.demo.cashierapp.repository.SupplierRepository;
@@ -36,7 +35,7 @@ public class SupplierServiceImpl implements SupplierService {
     public Supplier getSupplierByName(String name) {
         final Optional<Supplier> entity = supplierRepository.findSupplierByName(name);
         if (entity.isEmpty()) {
-            throw new IllegalArgumentException("Employee does not exist");
+            throw new IllegalArgumentException("Supplier does not exist");
         }
         return entity.get();
     }

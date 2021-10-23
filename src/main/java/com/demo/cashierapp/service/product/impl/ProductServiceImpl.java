@@ -49,4 +49,10 @@ public class ProductServiceImpl implements ProductService {
         }
         return entity.get();
     }
+
+    @Override
+    public void deleteProductByBarcode(String barcode) {
+        final Product product = this.getProductByBarcode(barcode);
+        productRepository.deleteById(product.getId());
+    }
 }

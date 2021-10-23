@@ -45,6 +45,7 @@ public class SupplierApiServiceImpl implements SupplierApiService {
 
     @Override
     public void deleteByName(String name) {
+
         supplierService.deleteByName(name);
     }
 
