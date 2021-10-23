@@ -50,6 +50,7 @@ public class EmployeeApiServiceImpl implements EmployeeApiService {
 
     @Override
     public EmployeeDetailsResponseModel getByUsername(String username) {
+
         return null;
 
     }
