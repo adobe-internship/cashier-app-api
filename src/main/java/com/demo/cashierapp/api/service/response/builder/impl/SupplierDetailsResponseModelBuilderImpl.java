@@ -1,20 +1,16 @@
-package com.demo.cashierapp.api.service;
+package com.demo.cashierapp.api.service.response.builder.impl;
 
-import com.demo.cashierapp.entity.Employee;
-import com.demo.cashierapp.entity.Role;
+import com.demo.cashierapp.api.service.response.builder.SupplierDetailsResponseModelBuilder;
 import com.demo.cashierapp.entity.Supplier;
-import com.demo.cashierapp.model.apiService.employee.EmployeeDetailsResponseModel;
 import com.demo.cashierapp.model.apiService.supplier.SupplierDetailsResponseModel;
 
 import com.demo.cashierapp.service.supplier.SupplierService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-
 @Component
 @RequiredArgsConstructor
-public class SupplierDetailsResponseModelBuilderImpl implements  SupplierDetailsResponseModelBuilder {
+public class SupplierDetailsResponseModelBuilderImpl implements SupplierDetailsResponseModelBuilder {
 
 
     private final SupplierService supplierService;
@@ -25,7 +21,7 @@ public class SupplierDetailsResponseModelBuilderImpl implements  SupplierDetails
 
         final SupplierDetailsResponseModel supplierDetailsResponseModel = new SupplierDetailsResponseModel();
         supplierDetailsResponseModel.setName(supplier.getName());
-        supplierDetailsResponseModel.setContact_name(supplier.getContactName());
+        supplierDetailsResponseModel.setContactName(supplier.getContactName());
         supplierDetailsResponseModel.setAddress(supplier.getAddress());
         supplierDetailsResponseModel.setPhone(supplier.getPhone());
 

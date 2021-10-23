@@ -1,14 +1,14 @@
 package com.demo.cashierapp.api.service.product;
 
 import com.demo.cashierapp.model.apiService.product.CreateProductRequestModel;
-import com.demo.cashierapp.model.apiService.product.ProductDetailsModel;
+import com.demo.cashierapp.model.apiService.product.ProductDetailsResponseModel;
 
 import java.util.List;
 
 public interface ProductApiService {
-    ProductDetailsModel create(CreateProductRequestModel createProductRequestModel);
+    ProductDetailsResponseModel create(CreateProductRequestModel createProductRequestModel);
 
-    List<ProductDetailsModel> getAll();
+    List<ProductDetailsResponseModel> getAll();
 
-    ProductDetailsModel getProductByBarcode(String barcode);
+    ProductDetailsResponseModel getProductByBarcode(String barcode);
 }

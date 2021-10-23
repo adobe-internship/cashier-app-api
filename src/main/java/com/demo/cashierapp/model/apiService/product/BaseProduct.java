@@ -1,19 +1,19 @@
 package com.demo.cashierapp.model.apiService.product;
 
-import com.demo.cashierapp.entity.Supplier;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 
+@Component
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 public class BaseProduct {
-    private Supplier supplier;
     private String brand;
     private String barcode;
     private String productName;

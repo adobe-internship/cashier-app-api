@@ -1,13 +1,8 @@
 package com.demo.cashierapp.api.service.supplier.impl;
 
-import com.demo.cashierapp.api.service.EmployeeDetailsResponseModelBuilder;
-import com.demo.cashierapp.api.service.SupplierDetailsResponseModelBuilder;
+import com.demo.cashierapp.api.service.response.builder.SupplierDetailsResponseModelBuilder;
 import com.demo.cashierapp.api.service.supplier.SupplierApiService;
-import com.demo.cashierapp.entity.Employee;
-import com.demo.cashierapp.entity.EmployeeRole;
-import com.demo.cashierapp.entity.Role;
 import com.demo.cashierapp.entity.Supplier;
-import com.demo.cashierapp.mapper.employee.MapperEmployee;
 import com.demo.cashierapp.mapper.supplier.MapperSupplier;
 import com.demo.cashierapp.model.apiService.supplier.CreateSupplierRequestModel;
 import com.demo.cashierapp.model.apiService.supplier.SupplierDetailsResponseModel;
@@ -16,7 +11,6 @@ import com.demo.cashierapp.service.supplier.SupplierService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 

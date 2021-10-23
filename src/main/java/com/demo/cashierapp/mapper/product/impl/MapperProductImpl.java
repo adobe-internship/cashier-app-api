@@ -10,7 +10,7 @@ public class MapperProductImpl implements MapperProduct {
 
     public CreateProductParams mapToCreateProductParams(CreateProductRequestModel createProductRequestModel) {
         return new CreateProductParams(
-                createProductRequestModel.getSupplier(),
+                null,
                 createProductRequestModel.getBrand(),
                 createProductRequestModel.getBarcode(),
                 createProductRequestModel.getProductName(),
