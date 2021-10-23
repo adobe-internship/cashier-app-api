@@ -32,7 +32,7 @@ public class Employee {
     @Column(name = "password")
     private String password;
 
-    @OneToMany(mappedBy = "employee")
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
     private List<EmployeeRole> roles;
 
     @Override

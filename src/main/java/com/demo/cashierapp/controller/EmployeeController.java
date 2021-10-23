@@ -24,4 +24,9 @@ public class EmployeeController {
     public List<EmployeeDetailsResponseModel> getAll() {
         return employeeApiService.getAll();
     }
+
+    @DeleteMapping("/delete/{username}")
+    public void deleteByUsername(@PathVariable String username) {
+        employeeApiService.deleteByUsername(username);
+    }
 }

@@ -3,7 +3,6 @@ package com.demo.cashierapp.api.service.product.impl;
 import com.demo.cashierapp.api.service.product.ProductApiService;
 import com.demo.cashierapp.api.service.response.builder.ProductDetailsResponseModelBuilder;
 import com.demo.cashierapp.entity.Product;
-import com.demo.cashierapp.entity.Supplier;
 import com.demo.cashierapp.mapper.product.MapperProduct;
 import com.demo.cashierapp.model.apiService.product.CreateProductRequestModel;
 import com.demo.cashierapp.model.apiService.product.ProductDetailsResponseModel;
