@@ -1,6 +1,5 @@
 package com.demo.cashierapp.service.product.impl;
 
-import com.demo.cashierapp.entity.Employee;
 import com.demo.cashierapp.entity.Product;
 import com.demo.cashierapp.entity.Supplier;
 import com.demo.cashierapp.model.service.product.CreateProductParams;

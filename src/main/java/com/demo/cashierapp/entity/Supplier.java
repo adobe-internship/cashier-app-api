@@ -39,6 +39,7 @@ public class Supplier {
         this.address = address;
         this.phone = phone;
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

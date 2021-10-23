@@ -9,21 +9,21 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
-    @CrossOrigin("http://localhost:3000")
-    @RestController
-    @RequestMapping("/api/supplier")
-    @RequiredArgsConstructor
+@CrossOrigin("http://localhost:3000")
+@RestController
+@RequestMapping("/api/supplier")
+@RequiredArgsConstructor
 
-    public class SupplierController {
-        private final SupplierApiServiceImpl supplierApiService;
+public class SupplierController {
+    private final SupplierApiServiceImpl supplierApiService;
 
-        @PostMapping
-        public SupplierDetailsResponseModel create(@RequestBody CreateSupplierRequestModel createSupplierRequestModel) {
-            return supplierApiService.create(createSupplierRequestModel);
-        }
+    @PostMapping
+    public SupplierDetailsResponseModel create(@RequestBody CreateSupplierRequestModel createSupplierRequestModel) {
+        return supplierApiService.create(createSupplierRequestModel);
+    }
 
-        @GetMapping
-        public List<SupplierDetailsResponseModel> getAll() {
-            return supplierApiService.getAll();
-        }
+    @GetMapping
+    public List<SupplierDetailsResponseModel> getAll() {
+        return supplierApiService.getAll();
+    }
 }

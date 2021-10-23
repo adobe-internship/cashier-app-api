@@ -1,6 +1,5 @@
 package com.demo.cashierapp.model.service.product;
 
-import com.demo.cashierapp.entity.Supplier;
 import lombok.Getter;
 
 import java.math.BigDecimal;

@@ -29,16 +29,22 @@ public class Product {
 
     @Column(name = "barcode", unique = true, nullable = false)
     private String barcode;
+
     @Column(name = "product_name")
     private String productName;
+
     @Column(name = "product_description")
     private String productDescription;
+
     @Column(name = "quantity")
     private int quantity;
+
     @Column(name = "unit_of_measurement")
     private String unitOfMeasurement;
+
     @Column(name = "cost_price")
     private BigDecimal costPrice;
+
     @Column(name = "sale_price")
     private BigDecimal salePrice;
 

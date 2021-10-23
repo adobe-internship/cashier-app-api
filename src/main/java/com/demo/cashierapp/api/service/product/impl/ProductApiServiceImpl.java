@@ -31,10 +31,10 @@ public class ProductApiServiceImpl implements ProductApiService {
     @Override
     public List<ProductDetailsResponseModel> getAll() {
         List<Product> products = productService.getAll();
-         return products
-                 .stream()
-                 .map(product -> productResponseBuilder.build(product.getBarcode()))
-                 .collect(Collectors.toList());
+        return products
+                .stream()
+                .map(product -> productResponseBuilder.build(product.getBarcode()))
+                .collect(Collectors.toList());
     }
 
     @Override
