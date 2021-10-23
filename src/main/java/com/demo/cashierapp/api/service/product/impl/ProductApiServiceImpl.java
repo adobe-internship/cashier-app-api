@@ -26,9 +26,8 @@ public class ProductApiServiceImpl implements ProductApiService {
 
     @Override
     public ProductDetailsResponseModel create(CreateProductRequestModel createProductRequestModel) {
-        final Supplier supplier = supplierService.getSupplierByName(createProductRequestModel.getSupplierName());
+//        final Supplier supplier = supplierService.getSupplierByName(createProductRequestModel.getSupplierName());
         final CreateProductParams productParams = mapperProduct.mapToCreateProductParams(createProductRequestModel);
-        productParams.setSupplier(supplier);
         final Product savedProduct = productService.create(productParams);
         return productResponseBuilder.build(savedProduct.getBarcode());
     }

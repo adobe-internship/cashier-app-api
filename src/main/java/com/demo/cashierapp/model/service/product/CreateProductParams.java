@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 
 @Getter
 public class CreateProductParams {
-    private Supplier supplier;
+    private final String supplier;
     private final String brand;
     private final String barcode;
     private final String productName;
@@ -18,7 +18,7 @@ public class CreateProductParams {
     private final BigDecimal salePrice;
 
     public CreateProductParams(
-            Supplier supplier, String brand, String barcode, String productName,
+            String supplier, String brand, String barcode, String productName,
             String productDescription, int quantity, String unitOfMeasurement,
             BigDecimal costPrice, BigDecimal salePrice
     ) {
@@ -34,9 +34,5 @@ public class CreateProductParams {
         this.unitOfMeasurement = unitOfMeasurement;
         this.costPrice = costPrice;
         this.salePrice = salePrice;
-    }
-
-    public void setSupplier(Supplier supplier) {
-        this.supplier = supplier;
     }
 }
