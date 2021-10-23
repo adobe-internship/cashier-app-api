@@ -1,6 +1,6 @@
 package com.demo.cashierapp.api.service.employee.impl;
 
-import com.demo.cashierapp.api.service.EmployeeDetailsResponseModelBuilder;
+import com.demo.cashierapp.api.service.response.builder.EmployeeDetailsResponseModelBuilder;
 import com.demo.cashierapp.api.service.employee.EmployeeApiService;
 import com.demo.cashierapp.entity.Employee;
 import com.demo.cashierapp.entity.EmployeeRole;

@@ -7,18 +7,18 @@ import java.math.BigDecimal;
 
 @Getter
 public class CreateProductParams {
-    private final Supplier supplier;
+    private final String supplier;
     private final String brand;
     private final String barcode;
     private final String productName;
     private final String productDescription;
-    private final int quantity;
+    private final Integer quantity;
     private final String unitOfMeasurement;
     private final BigDecimal costPrice;
     private final BigDecimal salePrice;
 
     public CreateProductParams(
-            Supplier supplier, String brand, String barcode, String productName,
+            String supplier, String brand, String barcode, String productName,
             String productDescription, int quantity, String unitOfMeasurement,
             BigDecimal costPrice, BigDecimal salePrice
     ) {

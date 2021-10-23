@@ -1,6 +1,6 @@
 package com.demo.cashierapp.model.apiService.product;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.demo.cashierapp.model.apiService.supplier.SupplierDetailsResponseModel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 @Getter
 @Setter
-public class CreateProductRequestModel extends BaseProduct{
-    @JsonProperty("name")
-    private String supplierName;
+public class ProductDetailsResponseModel extends BaseProduct {
+    SupplierDetailsResponseModel supplier;
 }

@@ -23,7 +23,8 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "supplier_id", foreignKey = @ForeignKey(name = "FK_SUPPLIER_ID"))
     private Supplier supplier;
-    @Column(name = "brand", columnDefinition = "undefined")
+
+    @Column(name = "brand")
     private String brand;
 
     @Column(name = "barcode", unique = true, nullable = false)

@@ -26,5 +26,4 @@ import java.util.List;
         public List<SupplierDetailsResponseModel> getAll() {
             return supplierApiService.getAll();
         }
-
 }

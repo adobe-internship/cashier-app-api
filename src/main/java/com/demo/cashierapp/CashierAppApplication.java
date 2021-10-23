@@ -13,12 +13,5 @@ public class CashierAppApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CashierAppApplication.class, args);
 	}
-	@Bean
-	CommandLineRunner commandLineRunner(SupplierRepository supplierRepository){
-		return args -> {
-			Supplier supplier=new Supplier("name ", "name", "adress", "phone");
-			supplierRepository.save(supplier);
-		};
-	}
 
 }

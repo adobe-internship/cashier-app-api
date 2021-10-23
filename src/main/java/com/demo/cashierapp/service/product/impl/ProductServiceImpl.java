@@ -2,9 +2,11 @@ package com.demo.cashierapp.service.product.impl;
 
 import com.demo.cashierapp.entity.Employee;
 import com.demo.cashierapp.entity.Product;
+import com.demo.cashierapp.entity.Supplier;
 import com.demo.cashierapp.model.service.product.CreateProductParams;
 import com.demo.cashierapp.repository.ProductRepository;
 import com.demo.cashierapp.service.product.ProductService;
+import com.demo.cashierapp.service.supplier.SupplierService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,11 +18,13 @@ import java.util.Optional;
 public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
+    private final SupplierService supplierService;
 
     @Override
     public Product create(CreateProductParams createProductParams) {
-        Product product = new Product();
-        product.setSupplier(createProductParams.getSupplier());
+        final Product product = new Product();
+        final Supplier supplier = supplierService.getSupplierByName(createProductParams.getSupplier());
+        product.setSupplier(supplier);
         product.setBrand(createProductParams.getBrand());
         product.setBarcode(createProductParams.getBarcode());
         product.setProductName(createProductParams.getProductName());

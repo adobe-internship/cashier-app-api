@@ -1,4 +1,4 @@
-package com.demo.cashierapp.api.service;
+package com.demo.cashierapp.api.service.response.builder;
 
 
 import com.demo.cashierapp.model.apiService.employee.EmployeeDetailsResponseModel;

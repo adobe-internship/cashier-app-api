@@ -12,7 +12,7 @@ import lombok.Setter;
 public class BaseSupplier {
 
     private String name;
-    private String contact_name;
+    private String contactName;
     private String address;
     private String phone;
 }
