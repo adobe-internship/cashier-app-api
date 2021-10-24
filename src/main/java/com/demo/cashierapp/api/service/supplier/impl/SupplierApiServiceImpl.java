@@ -40,9 +40,16 @@ public class SupplierApiServiceImpl implements SupplierApiService {
 
     @Override
     public SupplierDetailsResponseModel getByName(String name) {
-        return null;
-    }
+        Supplier supplier= supplierService.getSupplierByName(name);
+        SupplierDetailsResponseModel supplierDetailsResponseModel = new SupplierDetailsResponseModel();
+        supplierDetailsResponseModel.setName(supplier.getName());
+        supplierDetailsResponseModel.setContactName(supplier.getContactName());
+        supplierDetailsResponseModel.setAddress(supplier.getAddress());
+        supplierDetailsResponseModel.setPhone(supplier.getPhone());
 
+        return supplierDetailsResponseModel;
+
+    }
     @Override
     public void deleteByName(String name) {
 
