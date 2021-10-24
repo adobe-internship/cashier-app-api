@@ -19,23 +19,34 @@ public class EmployeeValidatorImpl implements EmployeeValidator {
     @Override
     public List<ErrorSubtype> validate(CreateEmployeeRequestModel requestModel) {
         final List<ErrorSubtype> errors = new LinkedList<>();
-        if(employeeService.usernameExists(requestModel.getUsername())){
+        if (StringUtils.isEmpty(requestModel.getUsername())) {
+            errors.add(ErrorSubtype.MISSING_USERNAME);
+        } else if (employeeService.usernameExists(requestModel.getUsername())) {
             errors.add(ErrorSubtype.USERNAME_EXISTS);
         }
-        if(StringUtils.isEmpty(requestModel.getUsername())){
-            errors.add(ErrorSubtype.MISSING_USERNAME);
-        }
-        if(StringUtils.isEmpty(requestModel.getFirstName())){
+        if (StringUtils.isEmpty(requestModel.getFirstName())) {
             errors.add(ErrorSubtype.MISSING_FIRST_NAME);
         }
-        if(StringUtils.isEmpty(requestModel.getLastName())){
+        if (StringUtils.isEmpty(requestModel.getLastName())) {
             errors.add(ErrorSubtype.MISSING_LAST_NAME);
         }
-        if(StringUtils.isEmpty(requestModel.getPassword())){
+        if (StringUtils.isEmpty(requestModel.getPassword())) {
             errors.add(ErrorSubtype.MISSING_PASSWORD);
         }
-        if (requestModel.getRoles().isEmpty()){
+        if (requestModel.getRoles().isEmpty()) {
             errors.add(ErrorSubtype.MISSING_ROLE);
+        }
+        return errors;
+    }
+
+    @Override
+    public List<ErrorSubtype> validate(String username) {
+        final List<ErrorSubtype> errors = new LinkedList<>();
+
+        if (StringUtils.isEmpty(username)) {
+            errors.add(ErrorSubtype.MISSING_USERNAME);
+        } else if (employeeService.usernameExists(username)) {
+            errors.add(ErrorSubtype.USERNAME_EXISTS);
         }
         return errors;
     }
