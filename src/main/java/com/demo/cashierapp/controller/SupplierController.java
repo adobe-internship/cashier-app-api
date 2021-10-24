@@ -26,4 +26,16 @@ public class SupplierController {
     public List<SupplierDetailsResponseModel> getAll() {
         return supplierApiService.getAll();
     }
+
+
+    @GetMapping
+    public SupplierDetailsResponseModel getByName(String name){
+        return supplierApiService.getByName(name);
+    }
+
+    @DeleteMapping("/delete/{name}")
+    public void deleteByName(@PathVariable String name) {
+        supplierApiService.deleteByName(name);
+    }
+
 }
