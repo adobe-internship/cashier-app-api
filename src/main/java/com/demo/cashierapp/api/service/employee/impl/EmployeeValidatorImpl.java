@@ -45,8 +45,8 @@ public class EmployeeValidatorImpl implements EmployeeValidator {
 
         if (StringUtils.isEmpty(username)) {
             errors.add(ErrorSubtype.MISSING_USERNAME);
-        } else if (employeeService.usernameExists(username)) {
-            errors.add(ErrorSubtype.USERNAME_EXISTS);
+        } else if (!employeeService.usernameExists(username)) {
+            errors.add(ErrorSubtype.USERNAME_DOES_NOT_EXIST);
         }
         return errors;
     }
