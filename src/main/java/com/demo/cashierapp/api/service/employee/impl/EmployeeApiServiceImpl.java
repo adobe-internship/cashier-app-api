@@ -5,6 +5,7 @@ import com.demo.cashierapp.api.service.employee.EmployeeApiService;
 import com.demo.cashierapp.entity.Employee;
 import com.demo.cashierapp.entity.EmployeeRole;
 import com.demo.cashierapp.entity.Role;
+import com.demo.cashierapp.exception.types.UsernameExistsCustomException;
 import com.demo.cashierapp.mapper.employee.MapperEmployee;
 import com.demo.cashierapp.model.apiService.employee.*;
 import com.demo.cashierapp.service.employee.EmployeeService;
@@ -26,6 +27,9 @@ public class EmployeeApiServiceImpl implements EmployeeApiService {
 
     @Override
     public EmployeeDetailsResponseModel create(CreateEmployeeRequestModel createEmployeeRequestModel) {
+        if(employeeService.usernameExists(createEmployeeRequestModel.getUsername())) {
+            throw new UsernameExistsCustomException("Username: " + createEmployeeRequestModel.getUsername() + " already exists");
+        }
         final Employee savedEmployee = employeeService.create(
                 mapperEmployee.mapToCreateEmployeeParams(createEmployeeRequestModel)
         );
