@@ -24,28 +24,28 @@ public class Product {
     @JoinColumn(name = "supplier_id", foreignKey = @ForeignKey(name = "FK_SUPPLIER_ID"))
     private Supplier supplier;
 
-    @Column(name = "brand")
+    @Column(name = "brand", nullable = false)
     private String brand;
 
     @Column(name = "barcode", nullable = false)
     private String barcode;
 
-    @Column(name = "product_name")
+    @Column(name = "product_name", nullable = false)
     private String productName;
 
-    @Column(name = "product_description")
+    @Column(name = "product_description", nullable = false)
     private String productDescription;
 
-    @Column(name = "quantity")
-    private int quantity;
+    @Column(name = "quantity", nullable = false)
+    private Integer quantity;
 
-    @Column(name = "unit_of_measurement")
+    @Column(name = "unit_of_measurement", nullable = false)
     private String unitOfMeasurement;
 
-    @Column(name = "cost_price")
+    @Column(name = "cost_price", nullable = false)
     private BigDecimal costPrice;
 
-    @Column(name = "sale_price")
+    @Column(name = "sale_price", nullable = false)
     private BigDecimal salePrice;
 
     @Override
