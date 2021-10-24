@@ -3,6 +3,7 @@ package com.demo.cashierapp.controller;
 import com.demo.cashierapp.api.service.supplier.impl.SupplierApiServiceImpl;
 import com.demo.cashierapp.model.apiService.supplier.CreateSupplierRequestModel;
 import com.demo.cashierapp.model.apiService.supplier.SupplierDetailsResponseModel;
+import com.demo.cashierapp.model.apiService.supplier.SupplierUpdateRequestModel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,6 +37,11 @@ public class SupplierController {
     @DeleteMapping("/delete/{name}")
     public void deleteByName(@PathVariable String name) {
         supplierApiService.deleteByName(name);
+    }
+
+    @PutMapping
+    public SupplierDetailsResponseModel update(SupplierUpdateRequestModel supplierUpdateRequestModel){
+        return supplierApiService.update(supplierUpdateRequestModel);
     }
 
 }

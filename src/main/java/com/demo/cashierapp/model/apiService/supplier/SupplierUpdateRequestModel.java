@@ -7,5 +7,9 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class UpdateSupplierRequestModel {
+public class SupplierUpdateRequestModel {
+    private String concatName;
+    private String address;
+    private String phone;
+
 }
