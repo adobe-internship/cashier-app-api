@@ -1,11 +1,14 @@
 package com.demo.cashierapp.exception.types;
 
-public class ApiRequestException extends RuntimeException{
-    public ApiRequestException(String message) {
-        super(message);
-    }
+import com.demo.cashierapp.exception.ErrorSubtype;
+import lombok.Getter;
 
-    public ApiRequestException(String message, Throwable cause) {
-        super(message, cause);
+import java.util.List;
+@Getter
+public class ApiRequestException extends RuntimeException{
+    private final List<ErrorSubtype> errors;
+    public ApiRequestException(String message, List<ErrorSubtype> errors ) {
+        super(message);
+        this.errors = errors;
     }
 }
