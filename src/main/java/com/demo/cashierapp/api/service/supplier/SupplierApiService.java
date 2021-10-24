@@ -2,7 +2,7 @@ package com.demo.cashierapp.api.service.supplier;
 
 import com.demo.cashierapp.model.apiService.supplier.CreateSupplierRequestModel;
 import com.demo.cashierapp.model.apiService.supplier.SupplierDetailsResponseModel;
-import com.demo.cashierapp.model.apiService.supplier.UpdateSupplierRequestModel;
+import com.demo.cashierapp.model.apiService.supplier.SupplierUpdateRequestModel;
 
 import java.util.List;
 
@@ -15,5 +15,5 @@ public interface SupplierApiService {
 
     void deleteByName(String name);
 
-    SupplierDetailsResponseModel update(UpdateSupplierRequestModel updateSupplierRequestModel);
+    SupplierDetailsResponseModel update(SupplierUpdateRequestModel supplierUpdateRequestModel);
 }

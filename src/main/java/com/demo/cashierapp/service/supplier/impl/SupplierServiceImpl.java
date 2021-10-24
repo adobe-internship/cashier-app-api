@@ -2,6 +2,7 @@ package com.demo.cashierapp.service.supplier.impl;
 
 import com.demo.cashierapp.entity.Supplier;
 import com.demo.cashierapp.model.service.supplier.CreateSupplierParams;
+import com.demo.cashierapp.model.service.supplier.SupplierUpdateParams;
 import com.demo.cashierapp.repository.SupplierRepository;
 import com.demo.cashierapp.service.supplier.SupplierService;
 import lombok.RequiredArgsConstructor;
@@ -50,4 +51,21 @@ public class SupplierServiceImpl implements SupplierService {
     public void deleteByName(String name) {
         supplierRepository.deleteUserByName(name);
     }
+
+    @Override
+    public Supplier update(SupplierUpdateParams supplierUpdateParams) {
+        final Supplier supplier =getSupplierByName(supplierUpdateParams.getName());
+
+        if(supplierUpdateParams.getConcatName()!=null){
+            supplier.setContactName(supplierUpdateParams.getConcatName());
+        }
+        if(supplierUpdateParams.getAddress()!=null){
+            supplier.setAddress(supplierUpdateParams.getAddress());
+        }
+        if(supplierUpdateParams.getPhone()!=null){
+            supplier.setPhone(supplierUpdateParams.getPhone());
+        }
+        return supplier;
+    }
+
 }
