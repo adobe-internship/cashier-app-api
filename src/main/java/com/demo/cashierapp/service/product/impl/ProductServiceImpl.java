@@ -22,13 +22,19 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product create(CreateProductParams createProductParams) {
         final Product product = new Product();
+        if (productExists(createProductParams.getBarcode())) {
+            final Product existingProduct = getProductByBarcode(createProductParams.getBarcode());
+            product.setId(existingProduct.getId());
+            product.setQuantity(createProductParams.getQuantity() + existingProduct.getQuantity());
+        } else {
+            product.setQuantity(createProductParams.getQuantity());
+        }
         final Supplier supplier = supplierService.getSupplierByName(createProductParams.getSupplier());
         product.setSupplier(supplier);
         product.setBrand(createProductParams.getBrand());
         product.setBarcode(createProductParams.getBarcode());
         product.setProductName(createProductParams.getProductName());
         product.setProductDescription(createProductParams.getProductDescription());
-        product.setQuantity(createProductParams.getQuantity());
         product.setUnitOfMeasurement(createProductParams.getUnitOfMeasurement());
         product.setCostPrice(createProductParams.getCostPrice());
         product.setSalePrice(createProductParams.getSalePrice());
@@ -53,5 +59,10 @@ public class ProductServiceImpl implements ProductService {
     public void deleteProductByBarcode(String barcode) {
         final Product product = this.getProductByBarcode(barcode);
         productRepository.deleteById(product.getId());
+    }
+
+    @Override
+    public boolean productExists(String barcode) {
+        return productRepository.findProductByBarcode(barcode).isPresent();
     }
 }

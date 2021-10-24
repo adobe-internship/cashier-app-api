@@ -8,7 +8,6 @@ import com.demo.cashierapp.model.apiService.supplier.CreateSupplierRequestModel;
 import com.demo.cashierapp.model.apiService.supplier.SupplierDetailsResponseModel;
 import com.demo.cashierapp.model.apiService.supplier.SupplierUpdateRequestModel;
 import com.demo.cashierapp.model.service.supplier.SupplierUpdateParams;
-import com.demo.cashierapp.service.supplier.AuthenticationService;
 import com.demo.cashierapp.service.supplier.SupplierService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -23,7 +22,7 @@ public class SupplierApiServiceImpl implements SupplierApiService {
     private final SupplierService supplierService;
     private final MapperSupplier mapperSupplier;
     private final SupplierDetailsResponseModelBuilder supplierDetailsBuilder;
-    private final AuthenticationService authenticationService;
+//    private final AuthenticationService authenticationService;
 
     @Override
     public SupplierDetailsResponseModel create(CreateSupplierRequestModel createSupplierRequestModel) {
@@ -61,15 +60,20 @@ public class SupplierApiServiceImpl implements SupplierApiService {
 
     @Override
     public SupplierDetailsResponseModel update(SupplierUpdateRequestModel supplierUpdateRequestModel) {
-
-        Supplier supplier =supplierService.update(
-                new SupplierUpdateParams(
-                        authenticationService.getAuthenticatedName(),
-                        supplierUpdateRequestModel.getConcatName(),
-                        supplierUpdateRequestModel.getAddress(),
-                        supplierUpdateRequestModel.getPhone())
-        );
-        return supplierDetailsBuilder.build(supplier.getName());
+        return null;
     }
+
+//    @Override
+//    public SupplierDetailsResponseModel update(SupplierUpdateRequestModel supplierUpdateRequestModel) {
+//
+//        Supplier supplier =supplierService.update(
+//                new SupplierUpdateParams(
+//                        authenticationService.getAuthenticatedName(),
+//                        supplierUpdateRequestModel.getConcatName(),
+//                        supplierUpdateRequestModel.getAddress(),
+//                        supplierUpdateRequestModel.getPhone())
+//        );
+//        return supplierDetailsBuilder.build(supplier.getName());
+//    }
 
 }

@@ -13,4 +13,6 @@ public interface ProductService {
     Product getProductByBarcode(String barcode);
 
     void deleteProductByBarcode(String barcode);
+
+    boolean productExists(String barcode);
 }

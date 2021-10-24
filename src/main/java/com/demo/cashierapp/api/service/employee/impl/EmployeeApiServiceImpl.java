@@ -32,6 +32,7 @@ public class EmployeeApiServiceImpl implements EmployeeApiService {
     public EmployeeDetailsResponseModel create(CreateEmployeeRequestModel createEmployeeRequestModel) {
         List<ErrorSubtype> errorSubtypes = employeeValidator.validate(createEmployeeRequestModel);
         if(!errorSubtypes.isEmpty()) {
+
             throw new EmployeeValidationException("Employee does not validated. For more information see Errors", errorSubtypes);
         }
         final Employee savedEmployee = employeeService.create(

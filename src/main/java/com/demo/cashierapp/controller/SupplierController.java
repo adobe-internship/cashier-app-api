@@ -29,8 +29,8 @@ public class SupplierController {
     }
 
 
-    @GetMapping
-    public SupplierDetailsResponseModel getByName(String name){
+    @GetMapping("/{name}")
+    public SupplierDetailsResponseModel getByName(@PathVariable String name){
         return supplierApiService.getByName(name);
     }
 
@@ -39,9 +39,9 @@ public class SupplierController {
         supplierApiService.deleteByName(name);
     }
 
-    @PutMapping
-    public SupplierDetailsResponseModel update(SupplierUpdateRequestModel supplierUpdateRequestModel){
-        return supplierApiService.update(supplierUpdateRequestModel);
-    }
+//    @PutMapping
+//    public SupplierDetailsResponseModel update(SupplierUpdateRequestModel supplierUpdateRequestModel){
+//        return supplierApiService.update(supplierUpdateRequestModel);
+//    }
 
 }
