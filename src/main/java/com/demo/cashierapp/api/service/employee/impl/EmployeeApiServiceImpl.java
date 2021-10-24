@@ -1,10 +1,13 @@
 package com.demo.cashierapp.api.service.employee.impl;
 
+import com.demo.cashierapp.api.service.employee.EmployeeValidator;
 import com.demo.cashierapp.api.service.response.builder.EmployeeDetailsResponseModelBuilder;
 import com.demo.cashierapp.api.service.employee.EmployeeApiService;
 import com.demo.cashierapp.entity.Employee;
 import com.demo.cashierapp.entity.EmployeeRole;
 import com.demo.cashierapp.entity.Role;
+import com.demo.cashierapp.exception.ErrorSubtype;
+import com.demo.cashierapp.exception.types.EmployeeValidationException;
 import com.demo.cashierapp.mapper.employee.MapperEmployee;
 import com.demo.cashierapp.model.apiService.employee.*;
 import com.demo.cashierapp.service.employee.EmployeeService;
@@ -23,9 +26,14 @@ public class EmployeeApiServiceImpl implements EmployeeApiService {
     private final EmployeeRoleService employeeRoleService;
     private final MapperEmployee mapperEmployee;
     private final EmployeeDetailsResponseModelBuilder employeeDetailsBuilder;
+    private final EmployeeValidator employeeValidator;
 
     @Override
     public EmployeeDetailsResponseModel create(CreateEmployeeRequestModel createEmployeeRequestModel) {
+        List<ErrorSubtype> errorSubtypes = employeeValidator.validate(createEmployeeRequestModel);
+        if(!errorSubtypes.isEmpty()) {
+            throw new EmployeeValidationException("Employee does not validated. For more information see Errors", errorSubtypes);
+        }
         final Employee savedEmployee = employeeService.create(
                 mapperEmployee.mapToCreateEmployeeParams(createEmployeeRequestModel)
         );
