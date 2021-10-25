@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface EmployeeValidator {
     List<ErrorSubtype> validate(CreateEmployeeRequestModel requestModel);
-    List<ErrorSubtype> validate(String username);
+    List<ErrorSubtype> validate(String name);
 }
