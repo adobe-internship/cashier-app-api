@@ -31,7 +31,7 @@ public class LoadDatabase {
                                     "ruzanna",
                                     "Ruzanna",
                                     "Zohrabyan",
-                                    "123456",
+                                    "12345678",
                                     Arrays.asList(Role.CASHIER)
                             )
                     )
@@ -42,7 +42,7 @@ public class LoadDatabase {
                                     "julieta",
                                     "Julieta",
                                     "Aghakaryan",
-                                    "123456",
+                                    "12345678",
                                     Arrays.asList(Role.ADMIN)
                             )
                     )
@@ -53,7 +53,17 @@ public class LoadDatabase {
                                     "marina",
                                     "Marina",
                                     "Zakaryan",
-                                    "123456",
+                                    "12345678",
+                                    Arrays.asList(Role.ADMIN)
+                            )
+                    )
+            );
+            log.info("Preloading " + employeeService.create(
+                            new CreateEmployeeRequestModel(
+                                    "ruben",
+                                    "Ruben",
+                                    "Balayan",
+                                    "12345678",
                                     Arrays.asList(Role.ADMIN)
                             )
                     )
