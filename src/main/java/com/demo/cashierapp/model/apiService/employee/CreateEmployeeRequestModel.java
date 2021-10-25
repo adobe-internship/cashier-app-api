@@ -8,11 +8,15 @@ import lombok.Setter;
 
 import java.util.List;
 
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
 public class CreateEmployeeRequestModel extends BaseEmployee {
+    public CreateEmployeeRequestModel(){}
+    public CreateEmployeeRequestModel(String username, String firstName, String lastName, String password, List<Role> roles){
+        super(username, firstName, lastName);
+        this.password = password;
+        this.roles = roles;
+    }
     private String password;
     private List<Role> roles;
 }

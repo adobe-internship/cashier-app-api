@@ -18,7 +18,7 @@ public class BaseProduct {
     private String barcode;
     private String productName;
     private String productDescription;
-    private int quantity;
+    private Integer quantity;
     private String unitOfMeasurement;
     private BigDecimal costPrice;
     private BigDecimal salePrice;
