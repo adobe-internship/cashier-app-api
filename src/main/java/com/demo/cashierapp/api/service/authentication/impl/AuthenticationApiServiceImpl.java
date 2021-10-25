@@ -2,7 +2,6 @@ package com.demo.cashierapp.api.service.authentication.impl;
 
 import com.demo.cashierapp.api.service.authentication.AuthenticationApiService;
 import com.demo.cashierapp.api.service.employee.EmployeeValidator;
-import com.demo.cashierapp.api.service.response.builder.EmployeeDetailsResponseModelBuilder;
 import com.demo.cashierapp.entity.Employee;
 import com.demo.cashierapp.exception.ErrorSubtype;
 import com.demo.cashierapp.exception.types.EmployeeValidationException;
@@ -25,7 +24,6 @@ public class AuthenticationApiServiceImpl implements AuthenticationApiService {
     private final EmployeeService employeeService;
     private final EmployeeValidator employeeValidator;
     private final EmployeeRoleService employeeRoleService;
-    private final EmployeeDetailsResponseModelBuilder responseBuilder;
 
     @Override
     public AuthenticatedEmployeeResponseModel login(EmployeeAuthenticationRequestModel requestModel) {
@@ -45,11 +43,12 @@ public class AuthenticationApiServiceImpl implements AuthenticationApiService {
         String token = Jwts.builder()
                 .claim("roles", employeeRoleService.getAllRolesByUsername(employee.getUsername()))
                 .claim("username", employee.getUsername())
+                .claim("firstName", employee.getFirstName())
+                .claim("lastName", employee.getLastName())
                 .signWith(key).compact();
 
         final AuthenticatedEmployeeResponseModel responseModel = new AuthenticatedEmployeeResponseModel();
         responseModel.setToken(token);
-        responseModel.setEmployeeModel(responseBuilder.build(employee.getUsername()));
         return responseModel;
     }
 }
