@@ -2,12 +2,15 @@ package com.demo.cashierapp.api.service.supplier.impl;
 
 import com.demo.cashierapp.api.service.response.builder.SupplierDetailsResponseModelBuilder;
 import com.demo.cashierapp.api.service.supplier.SupplierApiService;
+import com.demo.cashierapp.api.service.supplier.SupplierValidator;
 import com.demo.cashierapp.entity.Supplier;
+import com.demo.cashierapp.exception.ErrorSubtype;
+import com.demo.cashierapp.exception.types.EmployeeValidationException;
+import com.demo.cashierapp.exception.types.SupplierValidationException;
 import com.demo.cashierapp.mapper.supplier.MapperSupplier;
 import com.demo.cashierapp.model.apiService.supplier.CreateSupplierRequestModel;
 import com.demo.cashierapp.model.apiService.supplier.SupplierDetailsResponseModel;
 import com.demo.cashierapp.model.apiService.supplier.SupplierUpdateRequestModel;
-import com.demo.cashierapp.model.service.supplier.SupplierUpdateParams;
 import com.demo.cashierapp.service.supplier.SupplierService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -22,13 +25,18 @@ public class SupplierApiServiceImpl implements SupplierApiService {
     private final SupplierService supplierService;
     private final MapperSupplier mapperSupplier;
     private final SupplierDetailsResponseModelBuilder supplierDetailsBuilder;
+    private final SupplierValidator supplierValidator;
 //    private final AuthenticationService authenticationService;
 
     @Override
     public SupplierDetailsResponseModel create(CreateSupplierRequestModel createSupplierRequestModel) {
-        final Supplier savedSupplier = supplierService.create(
-                mapperSupplier.mapToCreateSupplierParams(createSupplierRequestModel));
-
+        List<ErrorSubtype> errorSubtypes = supplierValidator.validate(createSupplierRequestModel);
+        if (!errorSubtypes.isEmpty()) {
+            throw new SupplierValidationException("Supplier does not validated. For more information see Errors", errorSubtypes);
+        }
+        final Supplier savedSupplier= supplierService.create(
+                mapperSupplier.mapToCreateSupplierParams(createSupplierRequestModel)
+        );
         return supplierDetailsBuilder.build(savedSupplier.getName());
     }
 
@@ -42,21 +50,16 @@ public class SupplierApiServiceImpl implements SupplierApiService {
 
     @Override
     public SupplierDetailsResponseModel getByName(String name) {
-        Supplier supplier= supplierService.getSupplierByName(name);
-        SupplierDetailsResponseModel supplierDetailsResponseModel = new SupplierDetailsResponseModel();
-        supplierDetailsResponseModel.setName(supplier.getName());
-        supplierDetailsResponseModel.setContactName(supplier.getContactName());
-        supplierDetailsResponseModel.setAddress(supplier.getAddress());
-        supplierDetailsResponseModel.setPhone(supplier.getPhone());
-
-        return supplierDetailsResponseModel;
+        checkSupplierByName(name);
+        return supplierDetailsBuilder.build(name);
 
     }
     @Override
     public void deleteByName(String name) {
-
+        checkSupplierByName(name);
         supplierService.deleteByName(name);
     }
+
 
     @Override
     public SupplierDetailsResponseModel update(SupplierUpdateRequestModel supplierUpdateRequestModel) {
@@ -76,4 +79,11 @@ public class SupplierApiServiceImpl implements SupplierApiService {
 //        return supplierDetailsBuilder.build(supplier.getName());
 //    }
 
+
+    private void checkSupplierByName(String name) {
+        List<ErrorSubtype> errorSubtypes = supplierValidator.validate(name);
+        if (!errorSubtypes.isEmpty()) {
+            throw new EmployeeValidationException("Supplier does not validated. For more information see Errors", errorSubtypes);
+        }
+    }
 }
