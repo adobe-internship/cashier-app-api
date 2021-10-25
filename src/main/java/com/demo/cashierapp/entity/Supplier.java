@@ -21,16 +21,16 @@ public class Supplier {
     @SequenceGenerator(name = "SUPPLIER_SEQ_GEN", sequenceName = "SUPPLIER_ID_GEN", allocationSize = 1)
     private Long id;
 
-    @Column(name = "name", unique = true)
+    @Column(name = "name", unique = true, nullable = false)
     private String name;
 
-    @Column(name = "contact_name")
+    @Column(name = "contact_name", nullable = false)
     private String contactName;
 
-    @Column(name = "address")
+    @Column(name = "address", nullable = false)
     private String address;
 
-    @Column(name = "phone")
+    @Column(name = "phone", nullable = false)
     private String phone;
 
     public Supplier(String name, String contactName, String address, String phone) {
