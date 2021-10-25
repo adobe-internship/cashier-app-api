@@ -1,5 +1,6 @@
 package com.demo.cashierapp.model.apiService.employee;
 
+import com.demo.cashierapp.entity.Employee;
 import com.demo.cashierapp.entity.Role;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -16,5 +17,8 @@ import java.util.List;
 public class EmployeeDetailsResponseModel extends BaseEmployee {
     @JsonProperty("roles")
      List<Role> roleList;
-
+    public EmployeeDetailsResponseModel(String username, String firstName, String lastName, List<Role> roleList){
+        super(username, firstName, lastName);
+        this.roleList = roleList;
+    }
 }
