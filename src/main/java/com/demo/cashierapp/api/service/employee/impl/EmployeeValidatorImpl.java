@@ -10,6 +10,10 @@ import org.springframework.stereotype.Component;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import static java.util.regex.Pattern.compile;
 
 @Component
 @RequiredArgsConstructor
@@ -32,6 +36,8 @@ public class EmployeeValidatorImpl implements EmployeeValidator {
         }
         if (StringUtils.isEmpty(requestModel.getPassword())) {
             errors.add(ErrorSubtype.MISSING_PASSWORD);
+        } else if (!isPasswordValid(requestModel.getPassword())) {
+            errors.add(ErrorSubtype.PASSWORD_IS_INVALID);
         }
         if (requestModel.getRoles().isEmpty()) {
             errors.add(ErrorSubtype.MISSING_ROLE);
@@ -50,4 +56,12 @@ public class EmployeeValidatorImpl implements EmployeeValidator {
         }
         return errors;
     }
+
+    private boolean isPasswordValid(String password) {
+        final String passwordPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$";
+        final Pattern pattern = compile(passwordPattern);
+        Matcher matcher = pattern.matcher(password);
+        return matcher.matches();
+    }
+
 }

@@ -31,7 +31,7 @@ public class LoadDatabase {
                                     "ruzanna",
                                     "Ruzanna",
                                     "Zohrabyan",
-                                    "12345678",
+                                    "Q!w2e3r4",
                                     Arrays.asList(Role.CASHIER)
                             )
                     )
@@ -42,7 +42,7 @@ public class LoadDatabase {
                                     "julieta",
                                     "Julieta",
                                     "Aghakaryan",
-                                    "12345678",
+                                    "Q!w2e3r4",
                                     Arrays.asList(Role.ADMIN)
                             )
                     )
@@ -53,7 +53,7 @@ public class LoadDatabase {
                                     "marina",
                                     "Marina",
                                     "Zakaryan",
-                                    "12345678",
+                                    "Q!w2e3r4",
                                     Arrays.asList(Role.ADMIN)
                             )
                     )
@@ -63,7 +63,7 @@ public class LoadDatabase {
                                     "ruben",
                                     "Ruben",
                                     "Balayan",
-                                    "12345678",
+                                    "Q!w2e3r4",
                                     Arrays.asList(Role.ADMIN)
                             )
                     )
