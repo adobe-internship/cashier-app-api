@@ -1,8 +1,7 @@
 package com.demo.cashierapp.controller;
 
 import com.demo.cashierapp.api.service.product.ProductApiService;
-import com.demo.cashierapp.model.apiService.product.CreateProductRequestModel;
-import com.demo.cashierapp.model.apiService.product.ProductDetailsResponseModel;
+import com.demo.cashierapp.model.apiService.product.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,5 +28,15 @@ public class ProductController {
     public void deleteByBarcode(@PathVariable String barcode) {
 
         productApiService.deleteByBarcode(barcode);
+    }
+
+    @GetMapping("/buy")
+    public BuyProductResponseModel buyProduct(@RequestBody BuyProductRequestModel requestModel) {
+        return productApiService.buyProduct(requestModel);
+    }
+
+    @PostMapping("/return")
+    public void returnProduct(@RequestBody ReturnProductRequestModel requestModel) {
+        productApiService.returnProduct(requestModel);
     }
 }

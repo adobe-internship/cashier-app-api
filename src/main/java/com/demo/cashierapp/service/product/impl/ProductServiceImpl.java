@@ -2,7 +2,10 @@ package com.demo.cashierapp.service.product.impl;
 
 import com.demo.cashierapp.entity.Product;
 import com.demo.cashierapp.entity.Supplier;
+import com.demo.cashierapp.model.apiService.product.BuyProductRequestModel;
+import com.demo.cashierapp.model.apiService.product.ReturnProductRequestModel;
 import com.demo.cashierapp.model.service.product.CreateProductParams;
+import com.demo.cashierapp.model.service.product.UpdateProductParams;
 import com.demo.cashierapp.repository.ProductRepository;
 import com.demo.cashierapp.service.product.ProductService;
 import com.demo.cashierapp.service.supplier.SupplierService;
@@ -65,4 +68,30 @@ public class ProductServiceImpl implements ProductService {
     public boolean productExists(String barcode) {
         return productRepository.findProductByBarcode(barcode).isPresent();
     }
+
+    @Override
+    public Product update(UpdateProductParams updateProductParams) {
+
+        return null;
+    }
+
+    @Override
+    public Product buyProduct(BuyProductRequestModel model) {
+        final Product product = getProductByBarcode(model.getBarcode());
+        int sub = product.getQuantity() - model.getQuantity();
+        if (sub < 0) {
+            throw new IllegalArgumentException("Requested quantity more than in the Store");
+        }
+        product.setQuantity(sub);
+        return productRepository.save(product);
+    }
+
+    @Override
+    public void returnProduct(ReturnProductRequestModel model) {
+        final Product product = getProductByBarcode(model.getBarcode());
+        int totalQuantity = product.getQuantity() + model.getQuantity();
+        product.setQuantity(totalQuantity);
+        productRepository.save(product);
+    }
+
 }

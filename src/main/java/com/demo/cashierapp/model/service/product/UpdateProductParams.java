@@ -5,7 +5,7 @@ import lombok.Getter;
 import java.math.BigDecimal;
 
 @Getter
-public class CreateProductParams {
+public class UpdateProductParams {
     private final String supplier;
     private final String brand;
     private final String barcode;
@@ -16,9 +16,9 @@ public class CreateProductParams {
     private final BigDecimal costPrice;
     private final BigDecimal salePrice;
 
-    public CreateProductParams(
+    public UpdateProductParams(
             String supplier, String brand, String barcode, String productName,
-            String productDescription, int quantity, String unitOfMeasurement,
+            String productDescription, Integer quantity, String unitOfMeasurement,
             BigDecimal costPrice, BigDecimal salePrice
     ) {
         this.supplier = supplier;
