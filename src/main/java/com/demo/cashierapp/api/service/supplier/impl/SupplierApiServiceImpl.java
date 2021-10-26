@@ -5,8 +5,8 @@ import com.demo.cashierapp.api.service.supplier.SupplierApiService;
 import com.demo.cashierapp.api.service.supplier.SupplierValidator;
 import com.demo.cashierapp.entity.Supplier;
 import com.demo.cashierapp.exception.ErrorSubtype;
-import com.demo.cashierapp.exception.types.EmployeeValidationException;
-import com.demo.cashierapp.exception.types.SupplierValidationException;
+import com.demo.cashierapp.exception.types.EmployeeValidationExceptionRequest;
+import com.demo.cashierapp.exception.types.SupplierValidationExceptionRequest;
 import com.demo.cashierapp.mapper.supplier.MapperSupplier;
 import com.demo.cashierapp.model.apiService.supplier.CreateSupplierRequestModel;
 import com.demo.cashierapp.model.apiService.supplier.SupplierDetailsResponseModel;
@@ -32,7 +32,7 @@ public class SupplierApiServiceImpl implements SupplierApiService {
     public SupplierDetailsResponseModel create(CreateSupplierRequestModel createSupplierRequestModel) {
         List<ErrorSubtype> errorSubtypes = supplierValidator.validate(createSupplierRequestModel);
         if (!errorSubtypes.isEmpty()) {
-            throw new SupplierValidationException("Supplier does not validated. For more information see Errors", errorSubtypes);
+            throw new SupplierValidationExceptionRequest("Supplier does not validated. For more information see Errors", errorSubtypes);
         }
         final Supplier savedSupplier= supplierService.create(
                 mapperSupplier.mapToCreateSupplierParams(createSupplierRequestModel)
@@ -83,7 +83,7 @@ public class SupplierApiServiceImpl implements SupplierApiService {
     private void checkSupplierByName(String name) {
         List<ErrorSubtype> errorSubtypes = supplierValidator.validate(name);
         if (!errorSubtypes.isEmpty()) {
-            throw new EmployeeValidationException("Supplier does not validated. For more information see Errors", errorSubtypes);
+            throw new EmployeeValidationExceptionRequest("Supplier does not validated. For more information see Errors", errorSubtypes);
         }
     }
 }

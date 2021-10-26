@@ -26,7 +26,6 @@ public class ProductController {
 
     @DeleteMapping("/delete/{barcode}")
     public void deleteByBarcode(@PathVariable String barcode) {
-
         productApiService.deleteByBarcode(barcode);
     }
 

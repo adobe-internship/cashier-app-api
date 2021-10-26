@@ -6,7 +6,7 @@ import com.demo.cashierapp.api.service.response.builder.BuyProductResponseModelB
 import com.demo.cashierapp.api.service.response.builder.ProductDetailsResponseModelBuilder;
 import com.demo.cashierapp.entity.Product;
 import com.demo.cashierapp.exception.ErrorSubtype;
-import com.demo.cashierapp.exception.types.ProductValidationException;
+import com.demo.cashierapp.exception.types.ProductValidationExceptionRequest;
 import com.demo.cashierapp.mapper.product.MapperProduct;
 import com.demo.cashierapp.model.apiService.product.*;
 import com.demo.cashierapp.model.service.product.CreateProductParams;
@@ -30,7 +30,7 @@ public class ProductApiServiceImpl implements ProductApiService {
     public ProductDetailsResponseModel create(CreateProductRequestModel createProductRequestModel) {
         final List<ErrorSubtype> errors = productValidator.validate(createProductRequestModel);
         if (!errors.isEmpty()) {
-            throw new ProductValidationException("Product does not validated. For more information see Errors", errors);
+            throw new ProductValidationExceptionRequest("Product does not validated. For more information see Errors", errors);
         }
         final CreateProductParams productParams = mapperProduct.mapToCreateProductParams(createProductRequestModel);
         final Product savedProduct = productService.create(productParams);
@@ -75,7 +75,7 @@ public class ProductApiServiceImpl implements ProductApiService {
     private void checkProductByBarcode(String barcode) {
         final List<ErrorSubtype> errors = productValidator.validate(barcode);
         if (!errors.isEmpty()) {
-            throw new ProductValidationException("Product does not validated. For more information see Errors", errors);
+            throw new ProductValidationExceptionRequest("Product does not validated. For more information see Errors", errors);
         }
     }
 }

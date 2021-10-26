@@ -1,7 +1,6 @@
 package com.demo.cashierapp.controller;
 
 import com.demo.cashierapp.api.service.employee.impl.EmployeeApiServiceImpl;
-import com.demo.cashierapp.exception.types.ApiRequestException;
 import com.demo.cashierapp.model.apiService.employee.CreateEmployeeRequestModel;
 import com.demo.cashierapp.model.apiService.employee.EmployeeDetailsResponseModel;
 import lombok.RequiredArgsConstructor;

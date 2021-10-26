@@ -7,7 +7,7 @@ import com.demo.cashierapp.entity.Employee;
 import com.demo.cashierapp.entity.EmployeeRole;
 import com.demo.cashierapp.entity.Role;
 import com.demo.cashierapp.exception.ErrorSubtype;
-import com.demo.cashierapp.exception.types.EmployeeValidationException;
+import com.demo.cashierapp.exception.types.EmployeeValidationExceptionRequest;
 import com.demo.cashierapp.mapper.employee.MapperEmployee;
 import com.demo.cashierapp.model.apiService.employee.CreateEmployeeRequestModel;
 import com.demo.cashierapp.model.apiService.employee.EmployeeDetailsResponseModel;
@@ -34,7 +34,7 @@ public class EmployeeApiServiceImpl implements EmployeeApiService {
     public EmployeeDetailsResponseModel create(CreateEmployeeRequestModel createEmployeeRequestModel) {
         List<ErrorSubtype> errorSubtypes = employeeValidator.validate(createEmployeeRequestModel);
         if (!errorSubtypes.isEmpty()) {
-            throw new EmployeeValidationException("Employee does not validated. For more information see Errors", errorSubtypes);
+            throw new EmployeeValidationExceptionRequest("Employee does not validated. For more information see Errors", errorSubtypes);
         }
         final Employee savedEmployee = employeeService.create(
                 mapperEmployee.mapToCreateEmployeeParams(createEmployeeRequestModel)
@@ -78,7 +78,7 @@ public class EmployeeApiServiceImpl implements EmployeeApiService {
     private void checkEmployeeByUsername(String username) {
         List<ErrorSubtype> errorSubtypes = employeeValidator.validate(username);
         if (!errorSubtypes.isEmpty()) {
-            throw new EmployeeValidationException("Employee does not validated. For more information see Errors", errorSubtypes);
+            throw new EmployeeValidationExceptionRequest("Employee does not validated. For more information see Errors", errorSubtypes);
         }
     }
 }
