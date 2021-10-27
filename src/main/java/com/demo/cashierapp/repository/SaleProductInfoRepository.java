@@ -1,4 +1,11 @@
 package com.demo.cashierapp.repository;
 
-public interface SaleProductInfoRepository {
+import com.demo.cashierapp.entity.Product;
+import com.demo.cashierapp.entity.SaleProductInfo;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.Optional;
+
+public interface SaleProductInfoRepository  extends JpaRepository<SaleProductInfo, Long> {
+
 }
