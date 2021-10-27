@@ -6,6 +6,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -34,8 +35,8 @@ public class Sale {
     @JoinColumn(name="employee_id", referencedColumnName = "id")
     private Employee employee;
 
-    @OneToOne(mappedBy = "sale")
-    private SaleProductInfo saleProductInfo;
+    @OneToMany(mappedBy = "sale", cascade = CascadeType.ALL)
+    private List<SaleProductInfo> saleProductInfo;
 
     @Override
     public boolean equals(Object o) {

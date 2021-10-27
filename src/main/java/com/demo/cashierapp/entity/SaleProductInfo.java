@@ -7,7 +7,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "sale")
+@Table(name = "sale_product_info")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -19,12 +19,12 @@ public class SaleProductInfo {
     @SequenceGenerator(name = "SALE_SEQ_GEN", sequenceName = "SALE_ID_SEQ", allocationSize = 1)
     private Long Id;
 
-    @OneToOne
-    @JoinColumn(name = "sale_id", referencedColumnName = "id")
+    @ManyToOne
+    @JoinColumn(name = "sale_id", foreignKey = @ForeignKey(name = "FK_SALE_ID"))
     private Sale sale;
 
     @OneToOne
-    @JoinColumn(name = "product_info_id", referencedColumnName = "id")
+    @JoinColumn(name = "product_info_id", foreignKey = @ForeignKey(name = "FK_PRODUCT_INFO_ID"))
     private ProductInfo productInfo;
 
     @Override
