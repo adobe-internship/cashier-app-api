@@ -53,19 +53,10 @@ public class EmployeeValidatorImpl implements EmployeeValidator {
         if (StringUtils.isEmpty(requestModel.getUsername())) {
             errors.add(ErrorSubtype.MISSING_USERNAME);
         }
-        if (StringUtils.isEmpty(requestModel.getFirstName())) {
-            errors.add(ErrorSubtype.MISSING_FIRST_NAME);
-        }
-        if (StringUtils.isEmpty(requestModel.getLastName())) {
-            errors.add(ErrorSubtype.MISSING_LAST_NAME);
-        }
         if (StringUtils.isEmpty(requestModel.getPassword())) {
             errors.add(ErrorSubtype.MISSING_PASSWORD);
         } else if (!isPasswordValid(requestModel.getPassword())) {
             errors.add(ErrorSubtype.PASSWORD_IS_INVALID);
-        }
-        if (requestModel.getRoles().isEmpty()) {
-            errors.add(ErrorSubtype.MISSING_ROLE);
         }
         return errors;
     }

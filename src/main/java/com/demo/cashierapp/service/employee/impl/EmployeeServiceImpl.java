@@ -33,8 +33,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Employee update(UpdateEmployeeParams updateEmployeeParams) {
         final String salt = BCrypt.gensalt(10);
         final Employee existingEmployee = getEmployeeByUsername(updateEmployeeParams.getUsername());
-        existingEmployee.setFirstName(updateEmployeeParams.getFirstName());
-        existingEmployee.setLastName(updateEmployeeParams.getLastName());
         existingEmployee.setPassword(BCrypt.hashpw(updateEmployeeParams.getPassword(), salt));
         return employeeRepository.save(existingEmployee);
     }

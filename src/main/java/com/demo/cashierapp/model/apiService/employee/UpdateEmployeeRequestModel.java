@@ -1,21 +1,18 @@
 package com.demo.cashierapp.model.apiService.employee;
 
 import com.demo.cashierapp.entity.Role;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
 
 @Getter
 @Setter
-public class UpdateEmployeeRequestModel extends BaseEmployee {
-
-    public UpdateEmployeeRequestModel(String username, String firstName, String lastName, String password, List<Role> roles) {
-        super(username, firstName, lastName);
-        this.password = password;
-        this.roles = roles;
-    }
-
-    private String password;
-    private List<Role> roles;
+@AllArgsConstructor
+@NoArgsConstructor
+public class UpdateEmployeeRequestModel {
+    private String username;
+    private String password;;
 }

@@ -77,19 +77,9 @@ public class EmployeeApiServiceImpl implements EmployeeApiService {
         if (!errorSubtypes.isEmpty()) {
             throw new EmployeeValidationExceptionRequest("Validation Error", errorSubtypes);
         }
-        UpdateEmployeeParams employeeParams = mapperEmployee.mapToUpdateEmployeeParams(updateEmployeeRequestModel);
-        Employee updatedEmployee = employeeService.update(employeeParams);
+        UpdateEmployeeParams updateEmployeeParams = mapperEmployee.mapToUpdateEmployeeParams(updateEmployeeRequestModel);
+        Employee updatedEmployee = employeeService.update(updateEmployeeParams);
 
-        List<EmployeeRole> employeeRoles = new ArrayList<>();
-
-        for (Role role : updateEmployeeRequestModel.getRoles()) {
-            if (!updatedEmployee.getRoles().equals(updateEmployeeRequestModel.getRoles())) {
-                employeeRoles.add(
-                        employeeRoleService.assign(updatedEmployee.getUsername(), role)
-                );
-            }
-        }
-        updatedEmployee.setRoles(new ArrayList<>(employeeRoles));
         return employeeDetailsBuilder.build(updatedEmployee.getUsername());
     }
 

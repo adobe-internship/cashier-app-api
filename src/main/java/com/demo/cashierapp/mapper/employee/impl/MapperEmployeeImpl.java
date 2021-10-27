@@ -24,9 +24,7 @@ public class MapperEmployeeImpl implements MapperEmployee {
     public UpdateEmployeeParams mapToUpdateEmployeeParams(UpdateEmployeeRequestModel updateEmployeeRequestModel) {
         return new UpdateEmployeeParams(
                 updateEmployeeRequestModel.getUsername(),
-                updateEmployeeRequestModel.getPassword(),
-                updateEmployeeRequestModel.getFirstName(),
-                updateEmployeeRequestModel.getLastName()
+                updateEmployeeRequestModel.getPassword()
         );
     }
 }
