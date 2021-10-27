@@ -16,6 +16,7 @@ import java.util.Optional;
 public class SupplierServiceImpl implements SupplierService {
 
     private final SupplierRepository supplierRepository;
+
     @Override
     public Supplier create(CreateSupplierParams createSupplierParams) {
 
@@ -49,23 +50,17 @@ public class SupplierServiceImpl implements SupplierService {
 
     @Override
     public void deleteByName(String name) {
-        supplierRepository.deleteUserByName(name);
+        final Supplier supplier = this.getSupplierByName(name);
+        supplierRepository.deleteById(supplier.getId());
     }
 
     @Override
     public Supplier update(SupplierUpdateParams supplierUpdateParams) {
         final Supplier supplier =getSupplierByName(supplierUpdateParams.getName());
-
-        if(supplierUpdateParams.getConcatName()!=null){
-            supplier.setContactName(supplierUpdateParams.getConcatName());
-        }
-        if(supplierUpdateParams.getAddress()!=null){
-            supplier.setAddress(supplierUpdateParams.getAddress());
-        }
-        if(supplierUpdateParams.getPhone()!=null){
-            supplier.setPhone(supplierUpdateParams.getPhone());
-        }
-        return supplier;
+        supplier.setContactName(supplierUpdateParams.getConcatName());
+        supplier.setAddress(supplierUpdateParams.getAddress());
+        supplier.setPhone(supplierUpdateParams.getPhone());
+        return supplierRepository.save(supplier);
     }
 
 }

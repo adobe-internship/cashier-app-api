@@ -30,7 +30,7 @@ public class ProductApiServiceImpl implements ProductApiService {
     public ProductDetailsResponseModel create(CreateProductRequestModel createProductRequestModel) {
         final List<ErrorSubtype> errors = productValidator.validate(createProductRequestModel);
         if (!errors.isEmpty()) {
-            throw new ProductValidationExceptionRequest("Product does not validated. For more information see Errors", errors);
+            throw new ProductValidationExceptionRequest("Validation Error", errors);
         }
         final CreateProductParams productParams = mapperProduct.mapToCreateProductParams(createProductRequestModel);
         final Product savedProduct = productService.create(productParams);
@@ -47,9 +47,10 @@ public class ProductApiServiceImpl implements ProductApiService {
     }
 
     @Override
-    public ProductDetailsResponseModel getProductByBarcode(String barcode) {
-        checkProductByBarcode(barcode);
-        return productResponseBuilder.build(barcode);
+    public ProductDetailsResponseModel update(UpdateProductRequestModel model) {
+        checkProductByBarcode(model.getBarcode());
+        final Product updatedProduct = productService.update(mapperProduct.mapToCreateProductParams(model));
+        return productResponseBuilder.build(updatedProduct.getBarcode());
     }
 
     @Override
@@ -75,7 +76,7 @@ public class ProductApiServiceImpl implements ProductApiService {
     private void checkProductByBarcode(String barcode) {
         final List<ErrorSubtype> errors = productValidator.validate(barcode);
         if (!errors.isEmpty()) {
-            throw new ProductValidationExceptionRequest("Product does not validated. For more information see Errors", errors);
+            throw new ProductValidationExceptionRequest("Validation Error", errors);
         }
     }
 }

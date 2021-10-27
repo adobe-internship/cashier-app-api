@@ -3,6 +3,7 @@ package com.demo.cashierapp.controller;
 import com.demo.cashierapp.api.service.employee.impl.EmployeeApiServiceImpl;
 import com.demo.cashierapp.model.apiService.employee.CreateEmployeeRequestModel;
 import com.demo.cashierapp.model.apiService.employee.EmployeeDetailsResponseModel;
+import com.demo.cashierapp.model.apiService.employee.UpdateEmployeeRequestModel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +19,11 @@ public class EmployeeController {
     @PostMapping
     public EmployeeDetailsResponseModel create(@RequestBody CreateEmployeeRequestModel createEmployeeRequestModel) {
         return employeeApiService.create(createEmployeeRequestModel);
+    }
+
+    @PutMapping
+    public EmployeeDetailsResponseModel update(@RequestBody UpdateEmployeeRequestModel updateEmployeeRequestModel) {
+        return employeeApiService.update(updateEmployeeRequestModel);
     }
 
     @GetMapping

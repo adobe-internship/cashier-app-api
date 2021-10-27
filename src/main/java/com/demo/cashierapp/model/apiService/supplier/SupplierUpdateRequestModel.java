@@ -8,7 +8,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class SupplierUpdateRequestModel {
-    private String concatName;
+    private String name;
+    private String contactName;
     private String address;
     private String phone;
 

@@ -14,7 +14,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/supplier")
 @RequiredArgsConstructor
-
 public class SupplierController {
     private final SupplierApiServiceImpl supplierApiService;
 
@@ -28,20 +27,13 @@ public class SupplierController {
         return supplierApiService.getAll();
     }
 
+    @PutMapping
+    public SupplierDetailsResponseModel update(@RequestBody SupplierUpdateRequestModel supplierUpdateRequestModel) {
+        return supplierApiService.update(supplierUpdateRequestModel);
+    }
 
     @GetMapping("/{name}")
-    public SupplierDetailsResponseModel getByName(@PathVariable String name){
+    public SupplierDetailsResponseModel getByName(@PathVariable String name) {
         return supplierApiService.getByName(name);
     }
-
-    @DeleteMapping("/delete/{name}")
-    public void deleteByName(@PathVariable String name) {
-        supplierApiService.deleteByName(name);
-    }
-
-//    @PutMapping
-//    public SupplierDetailsResponseModel update(SupplierUpdateRequestModel supplierUpdateRequestModel){
-//        return supplierApiService.update(supplierUpdateRequestModel);
-//    }
-
 }

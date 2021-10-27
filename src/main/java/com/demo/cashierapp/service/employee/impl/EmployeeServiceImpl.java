@@ -2,6 +2,7 @@ package com.demo.cashierapp.service.employee.impl;
 
 import com.demo.cashierapp.entity.Employee;
 import com.demo.cashierapp.model.service.employee.CreateEmployeeParams;
+import com.demo.cashierapp.model.service.employee.UpdateEmployeeParams;
 import com.demo.cashierapp.repository.EmployeeRepository;
 import com.demo.cashierapp.service.employee.EmployeeService;
 import lombok.RequiredArgsConstructor;
@@ -26,6 +27,16 @@ public class EmployeeServiceImpl implements EmployeeService {
         newEmployee.setUsername(createEmployeeParams.getUsername());
         newEmployee.setPassword(BCrypt.hashpw(createEmployeeParams.getPassword(), salt));
         return employeeRepository.save(newEmployee);
+    }
+
+    @Override
+    public Employee update(UpdateEmployeeParams updateEmployeeParams) {
+        final String salt = BCrypt.gensalt(10);
+        final Employee existingEmployee = getEmployeeByUsername(updateEmployeeParams.getUsername());
+        existingEmployee.setFirstName(updateEmployeeParams.getFirstName());
+        existingEmployee.setLastName(updateEmployeeParams.getLastName());
+        existingEmployee.setPassword(BCrypt.hashpw(updateEmployeeParams.getPassword(), salt));
+        return employeeRepository.save(existingEmployee);
     }
 
     @Override

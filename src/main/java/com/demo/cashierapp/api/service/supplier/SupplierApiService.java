@@ -13,7 +13,5 @@ public interface SupplierApiService {
 
     SupplierDetailsResponseModel getByName(String name);
 
-    void deleteByName(String name);
-
     SupplierDetailsResponseModel update(SupplierUpdateRequestModel supplierUpdateRequestModel);
 }

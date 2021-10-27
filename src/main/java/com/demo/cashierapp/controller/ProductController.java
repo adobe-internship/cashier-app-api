@@ -19,6 +19,11 @@ public class ProductController {
         return productApiService.create(createProductRequestModel);
     }
 
+    @PutMapping
+    public ProductDetailsResponseModel update(@RequestBody UpdateProductRequestModel updateProductRequestModel) {
+        return productApiService.update(updateProductRequestModel);
+    }
+
     @GetMapping
     public List<ProductDetailsResponseModel> getAll() {
         return productApiService.getAll();

@@ -1,6 +1,6 @@
 package com.demo.cashierapp.entity;
 
 public enum Role {
-    ADMIN,
-    CASHIER
+    ROLE_ADMIN,
+    ROLE_CASHIER
 }

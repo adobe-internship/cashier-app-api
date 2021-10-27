@@ -10,7 +10,7 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
 @ControllerAdvice
-public class ApiExceptionHandler{
+public class ApiExceptionHandler {
 
     @ExceptionHandler(value = {ApiExceptionRequest.class})
     public ResponseEntity<Object> handleException(ApiExceptionRequest e) {

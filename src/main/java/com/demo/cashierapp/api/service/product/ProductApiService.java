@@ -9,7 +9,7 @@ public interface ProductApiService {
 
     List<ProductDetailsResponseModel> getAll();
 
-    ProductDetailsResponseModel getProductByBarcode(String barcode);
+    ProductDetailsResponseModel update(UpdateProductRequestModel model);
 
     BuyProductResponseModel buyProduct(BuyProductRequestModel model);
 

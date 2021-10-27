@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface ProductValidator {
     List<ErrorSubtype> validate(CreateProductRequestModel requestModel);
+
     List<ErrorSubtype> validate(String barcode);
 }

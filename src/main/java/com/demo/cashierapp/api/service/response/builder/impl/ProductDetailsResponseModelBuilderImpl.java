@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 public class ProductDetailsResponseModelBuilderImpl implements ProductDetailsResponseModelBuilder {
     private final ProductService productService;
     private final SupplierDetailsResponseModelBuilder supplierResponseBuilder;
+
     @Override
     public ProductDetailsResponseModel build(String barcode) {
         final Product product = productService.getProductByBarcode(barcode);

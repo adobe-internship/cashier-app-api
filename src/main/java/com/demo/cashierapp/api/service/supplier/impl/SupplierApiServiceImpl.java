@@ -26,15 +26,14 @@ public class SupplierApiServiceImpl implements SupplierApiService {
     private final MapperSupplier mapperSupplier;
     private final SupplierDetailsResponseModelBuilder supplierDetailsBuilder;
     private final SupplierValidator supplierValidator;
-//    private final AuthenticationService authenticationService;
 
     @Override
     public SupplierDetailsResponseModel create(CreateSupplierRequestModel createSupplierRequestModel) {
         List<ErrorSubtype> errorSubtypes = supplierValidator.validate(createSupplierRequestModel);
         if (!errorSubtypes.isEmpty()) {
-            throw new SupplierValidationExceptionRequest("Supplier does not validated. For more information see Errors", errorSubtypes);
+            throw new SupplierValidationExceptionRequest("Validation Error", errorSubtypes);
         }
-        final Supplier savedSupplier= supplierService.create(
+        final Supplier savedSupplier = supplierService.create(
                 mapperSupplier.mapToCreateSupplierParams(createSupplierRequestModel)
         );
         return supplierDetailsBuilder.build(savedSupplier.getName());
@@ -54,36 +53,19 @@ public class SupplierApiServiceImpl implements SupplierApiService {
         return supplierDetailsBuilder.build(name);
 
     }
-    @Override
-    public void deleteByName(String name) {
-        checkSupplierByName(name);
-        supplierService.deleteByName(name);
-    }
-
 
     @Override
     public SupplierDetailsResponseModel update(SupplierUpdateRequestModel supplierUpdateRequestModel) {
-        return null;
+        checkSupplierByName(supplierUpdateRequestModel.getName());
+        Supplier supplier = supplierService.update(mapperSupplier.mapToCreateSupplierParams(supplierUpdateRequestModel));
+        return supplierDetailsBuilder.build(supplier.getName());
     }
-
-//    @Override
-//    public SupplierDetailsResponseModel update(SupplierUpdateRequestModel supplierUpdateRequestModel) {
-//
-//        Supplier supplier =supplierService.update(
-//                new SupplierUpdateParams(
-//                        authenticationService.getAuthenticatedName(),
-//                        supplierUpdateRequestModel.getConcatName(),
-//                        supplierUpdateRequestModel.getAddress(),
-//                        supplierUpdateRequestModel.getPhone())
-//        );
-//        return supplierDetailsBuilder.build(supplier.getName());
-//    }
 
 
     private void checkSupplierByName(String name) {
         List<ErrorSubtype> errorSubtypes = supplierValidator.validate(name);
         if (!errorSubtypes.isEmpty()) {
-            throw new EmployeeValidationExceptionRequest("Supplier does not validated. For more information see Errors", errorSubtypes);
+            throw new EmployeeValidationExceptionRequest("Validation Error", errorSubtypes);
         }
     }
 }

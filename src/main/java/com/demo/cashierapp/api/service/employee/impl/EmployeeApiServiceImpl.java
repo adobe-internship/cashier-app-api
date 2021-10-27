@@ -12,6 +12,7 @@ import com.demo.cashierapp.mapper.employee.MapperEmployee;
 import com.demo.cashierapp.model.apiService.employee.CreateEmployeeRequestModel;
 import com.demo.cashierapp.model.apiService.employee.EmployeeDetailsResponseModel;
 import com.demo.cashierapp.model.apiService.employee.UpdateEmployeeRequestModel;
+import com.demo.cashierapp.model.service.employee.UpdateEmployeeParams;
 import com.demo.cashierapp.service.employee.EmployeeService;
 import com.demo.cashierapp.service.role.EmployeeRoleService;
 import lombok.RequiredArgsConstructor;
@@ -34,7 +35,7 @@ public class EmployeeApiServiceImpl implements EmployeeApiService {
     public EmployeeDetailsResponseModel create(CreateEmployeeRequestModel createEmployeeRequestModel) {
         List<ErrorSubtype> errorSubtypes = employeeValidator.validate(createEmployeeRequestModel);
         if (!errorSubtypes.isEmpty()) {
-            throw new EmployeeValidationExceptionRequest("Employee does not validated. For more information see Errors", errorSubtypes);
+            throw new EmployeeValidationExceptionRequest("Validation Error", errorSubtypes);
         }
         final Employee savedEmployee = employeeService.create(
                 mapperEmployee.mapToCreateEmployeeParams(createEmployeeRequestModel)
@@ -72,13 +73,28 @@ public class EmployeeApiServiceImpl implements EmployeeApiService {
 
     @Override
     public EmployeeDetailsResponseModel update(UpdateEmployeeRequestModel updateEmployeeRequestModel) {
-        return null;
+        List<ErrorSubtype> errorSubtypes = employeeValidator.validate(updateEmployeeRequestModel);
+        if (!errorSubtypes.isEmpty()) {
+            throw new EmployeeValidationExceptionRequest("Validation Error", errorSubtypes);
+        }
+        UpdateEmployeeParams employeeParams = mapperEmployee.mapToUpdateEmployeeParams(updateEmployeeRequestModel);
+        Employee updatedEmployee = employeeService.update(employeeParams);
+
+        List<EmployeeRole> employeeRoles = new ArrayList<>();
+
+        for (Role role : updateEmployeeRequestModel.getRoles()) {
+            employeeRoles.add(
+                    employeeRoleService.assign(updatedEmployee.getUsername(), role)
+            );
+        }
+        updatedEmployee.setRoles(employeeRoles);
+        return employeeDetailsBuilder.build(updatedEmployee.getUsername());
     }
 
     private void checkEmployeeByUsername(String username) {
         List<ErrorSubtype> errorSubtypes = employeeValidator.validate(username);
         if (!errorSubtypes.isEmpty()) {
-            throw new EmployeeValidationExceptionRequest("Employee does not validated. For more information see Errors", errorSubtypes);
+            throw new EmployeeValidationExceptionRequest("Validation Error", errorSubtypes);
         }
     }
 }

@@ -71,8 +71,12 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product update(UpdateProductParams updateProductParams) {
-
-        return null;
+        final Product product = getProductByBarcode(updateProductParams.getBarcode());
+        final Supplier supplier = supplierService.getSupplierByName(updateProductParams.getSupplier());
+        product.setSupplier(supplier);
+        product.setCostPrice(updateProductParams.getCostPrice());
+        product.setSalePrice(updateProductParams.getSalePrice());
+        return productRepository.save(product);
     }
 
     @Override
