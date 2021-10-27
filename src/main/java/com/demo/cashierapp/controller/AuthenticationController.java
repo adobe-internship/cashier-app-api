@@ -6,7 +6,7 @@ import com.demo.cashierapp.model.apiService.authentication.EmployeeAuthenticatio
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/auth/login")
 @RequiredArgsConstructor

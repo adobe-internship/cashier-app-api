@@ -1,4 +1,4 @@
-package com.demo.cashierapp.utils.jwt;
+package com.demo.cashierapp.security.jwt;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.interfaces.DecodedJWT;
@@ -6,25 +6,28 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.filter.OncePerRequestFilter;
-
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class JwtAuthorization extends OncePerRequestFilter {
+public class JwtAuthorization implements Filter {
 
+
+//    @Override
+//    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+//
+//    }
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        String jwtToken = (request).getHeader("authorization");
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+        String jwtToken = ((HttpServletRequest)servletRequest).getHeader("authorization");
 
         if (jwtToken == null || jwtToken.equals("undefined")) {
-            filterChain.doFilter(request, response);
+            filterChain.doFilter(servletRequest, servletResponse);
+            return;
         }
 
         DecodedJWT decode = JWT.decode(jwtToken);
@@ -35,6 +38,6 @@ public class JwtAuthorization extends OncePerRequestFilter {
                 .collect(Collectors.toList());
 
         SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(username, null, authorities));
-        filterChain.doFilter(request, response);
+        filterChain.doFilter(servletRequest, servletResponse);
     }
 }
