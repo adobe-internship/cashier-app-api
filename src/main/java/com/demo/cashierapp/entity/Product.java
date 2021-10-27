@@ -1,11 +1,13 @@
 package com.demo.cashierapp.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Table(name = "product")
@@ -23,6 +25,9 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "supplier_id", foreignKey = @ForeignKey(name = "FK_SUPPLIER_ID"))
     private Supplier supplier;
+
+    @OneToOne(mappedBy = "product")
+    private ProductInfo productInfo;
 
     @Column(name = "brand")
     private String brand;
