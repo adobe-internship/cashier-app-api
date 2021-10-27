@@ -1,6 +1,7 @@
 package com.demo.cashierapp.model.apiService.productInfo;
 
-import com.demo.cashierapp.entity.Product;
+
+import com.demo.cashierapp.model.apiService.product.ProductDetailsResponseModel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,9 +13,6 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 @Getter
 @Setter
-public class BaseProductInfo {
-
-    private Product product;
-    private int quantity;
-
+public class ProductInfoDetailsResponseModel extends BaseProductInfo {
+    ProductDetailsResponseModel product;
 }
