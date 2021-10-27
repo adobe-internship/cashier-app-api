@@ -11,8 +11,7 @@ public class MapperSaleImpl implements MapperSale {
     public CreateSaleParams mapToCreateSaleParams(CreateSaleRequestModel createSaleRequestModel) {
         return  new CreateSaleParams(
                 createSaleRequestModel.getAmount(),
-                createSaleRequestModel.getSaleDate(),
-                createSaleRequestModel.getUuid()
+                createSaleRequestModel.getUsername()
         );
     }
 }

@@ -5,6 +5,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -23,19 +24,19 @@ public class Sale {
     private Long Id;
 
     @Column(name = "uuid")
-    private UUID uuid = UUID.randomUUID();
+    private String uuid = UUID.randomUUID().toString();
 
     @Column(name = "sale_date_time")
     private Date saleTime = new Date();
 
     @Column(name = "amount")
-    private double amount;
+    private BigDecimal amount;
 
     @OneToOne
     @JoinColumn(name="employee_id", referencedColumnName = "id")
     private Employee employee;
 
-    @OneToMany(mappedBy = "sale", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "productInfo", cascade = CascadeType.ALL)
     private List<SaleProductInfo> saleProductInfo;
 
     @Override

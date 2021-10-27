@@ -12,5 +12,7 @@ public interface SaleService {
 
     List<Sale> getAll();
 
+    Sale getSaleByUUID(UUID uuid);
+
 
 }
