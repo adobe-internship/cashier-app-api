@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 @Getter
 @Setter
-public class ProductDetailsResponseModel extends BaseProduct {
+public class
+ProductDetailsResponseModel extends BaseProduct {
     SupplierDetailsResponseModel supplier;
 }

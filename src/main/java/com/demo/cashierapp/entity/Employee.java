@@ -35,6 +35,9 @@ public class Employee {
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
     private List<EmployeeRole> roles;
 
+    @OneToOne(mappedBy = "employee")
+    private Sale sale;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
