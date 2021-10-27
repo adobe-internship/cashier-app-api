@@ -24,7 +24,7 @@ public class SaleProductInfo {
     private Sale sale;
 
     @OneToOne
-    @JoinColumn(name = "product_info_id", referencedColumnName = "id")
+    @JoinColumn(name = "sale_id", foreignKey = @ForeignKey(name = "FK_SALE_ID"))
     private ProductInfo productInfo;
 
     @Override
