@@ -83,11 +83,13 @@ public class EmployeeApiServiceImpl implements EmployeeApiService {
         List<EmployeeRole> employeeRoles = new ArrayList<>();
 
         for (Role role : updateEmployeeRequestModel.getRoles()) {
-            employeeRoles.add(
-                    employeeRoleService.assign(updatedEmployee.getUsername(), role)
-            );
+            if (!updatedEmployee.getRoles().equals(updateEmployeeRequestModel.getRoles())) {
+                employeeRoles.add(
+                        employeeRoleService.assign(updatedEmployee.getUsername(), role)
+                );
+            }
         }
-        updatedEmployee.setRoles(employeeRoles);
+        updatedEmployee.setRoles(new ArrayList<>(employeeRoles));
         return employeeDetailsBuilder.build(updatedEmployee.getUsername());
     }
 

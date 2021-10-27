@@ -16,16 +16,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
+                .addFilterAt(new JwtAuthorization(), BasicAuthenticationFilter.class)
                 .authorizeRequests()
-                .antMatchers("/api/auth/login").anonymous()
-//                .antMatchers(HttpMethod.GET, "/api/product/buy").hasRole("CASHIER")
+                .antMatchers("/api/auth/login").permitAll()
                 .antMatchers("/api/product/buy").hasRole("CASHIER")
                 .antMatchers("/api/product/return").hasRole("CASHIER")
 //                TODO: Add exact path for sale controller
                 .antMatchers("/api/sale/").hasRole("CASHIER")
                 .anyRequest().hasRole("ADMIN")
                 .and()
-                .addFilterAt(new JwtAuthorization(), BasicAuthenticationFilter.class)
+
                 .logout().permitAll();
     }
 

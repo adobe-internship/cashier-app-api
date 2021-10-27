@@ -3,6 +3,7 @@ package com.demo.cashierapp.entity;
 import lombok.*;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.persistence.*;
 
@@ -47,5 +48,14 @@ public class EmployeeRole {
                 .append(getRole())
                 .append(getEmployee())
                 .toHashCode();
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("id", id)
+                .append("role", role)
+                .append("employee", employee)
+                .toString();
     }
 }

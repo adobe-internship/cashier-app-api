@@ -52,8 +52,6 @@ public class EmployeeValidatorImpl implements EmployeeValidator {
         final List<ErrorSubtype> errors = new LinkedList<>();
         if (StringUtils.isEmpty(requestModel.getUsername())) {
             errors.add(ErrorSubtype.MISSING_USERNAME);
-        } else if (employeeService.usernameExists(requestModel.getUsername())) {
-            errors.add(ErrorSubtype.USERNAME_EXISTS);
         }
         if (StringUtils.isEmpty(requestModel.getFirstName())) {
             errors.add(ErrorSubtype.MISSING_FIRST_NAME);
