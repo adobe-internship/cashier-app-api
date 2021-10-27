@@ -16,7 +16,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
-                .addFilterAt(new JwtAuthorization(), BasicAuthenticationFilter.class)
                 .authorizeRequests()
                 .antMatchers("/api/auth/login").permitAll()
                 .antMatchers("/api/product/buy").hasRole("CASHIER")
@@ -25,7 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/sale/").hasRole("CASHIER")
                 .anyRequest().hasRole("ADMIN")
                 .and()
-
+                .addFilterBefore(new JwtAuthorization(), BasicAuthenticationFilter.class)
                 .logout().permitAll();
     }
 
