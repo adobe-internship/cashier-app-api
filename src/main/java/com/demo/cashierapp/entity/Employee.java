@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.persistence.*;
 import java.util.List;
@@ -14,7 +15,6 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString
 @JsonIgnoreProperties("roles")
 public class Employee {
     @Id
@@ -36,6 +36,7 @@ public class Employee {
 
     @OneToMany(mappedBy = "employee")
     private List<EmployeeRole> roles;
+
 
     @Override
     public boolean equals(Object o) {
@@ -61,5 +62,17 @@ public class Employee {
                 .append(getUsername())
                 .append(getPassword())
                 .toHashCode();
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("id", id)
+                .append("firstName", firstName)
+                .append("lastName", lastName)
+                .append("username", username)
+                .append("password", password)
+                .append("roles", roles)
+                .toString();
     }
 }

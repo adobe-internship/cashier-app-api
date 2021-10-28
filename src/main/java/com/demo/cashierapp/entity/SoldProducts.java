@@ -41,12 +41,22 @@ public class SoldProducts {
 
         SoldProducts that = (SoldProducts) o;
 
-        return new EqualsBuilder().append(getId(), that.getId()).append(getProduct(), that.getProduct()).append(getQuantity(), that.getQuantity()).append(getCostPrice(), that.getCostPrice()).append(getSalePrice(), that.getSalePrice()).isEquals();
+        return new EqualsBuilder()
+                .append(getProduct(), that.getProduct())
+                .append(getQuantity(), that.getQuantity())
+                .append(getCostPrice(), that.getCostPrice())
+                .append(getSalePrice(), that.getSalePrice())
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(getId()).append(getProduct()).append(getQuantity()).append(getCostPrice()).append(getSalePrice()).toHashCode();
+        return new HashCodeBuilder(17, 37)
+                .append(getProduct())
+                .append(getQuantity())
+                .append(getCostPrice())
+                .append(getSalePrice())
+                .toHashCode();
     }
 
     @Override

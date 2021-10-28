@@ -1,9 +1,9 @@
 package com.demo.cashierapp.entity;
 
-
 import lombok.*;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.persistence.*;
 
@@ -13,7 +13,6 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Table(name = "supplier")
-@ToString
 public class Supplier {
 
     @Id
@@ -64,5 +63,16 @@ public class Supplier {
                 .append(getAddress())
                 .append(getPhone())
                 .toHashCode();
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("id", id)
+                .append("name", name)
+                .append("contactName", contactName)
+                .append("address", address)
+                .append("phone", phone)
+                .toString();
     }
 }

@@ -9,7 +9,6 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -20,7 +19,6 @@ import java.util.UUID;
 @Getter
 @Setter
 @JsonIgnoreProperties({"saleSummaryList"})
-
 public class Sale {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SALE_SEQ_GEN")
@@ -51,12 +49,22 @@ public class Sale {
 
         Sale sale = (Sale) o;
 
-        return new EqualsBuilder().append(getId(), sale.getId()).append(getUuid(), sale.getUuid()).append(getSaleTime(), sale.getSaleTime()).append(getAmount(), sale.getAmount()).append(getEmployee(), sale.getEmployee()).isEquals();
+        return new EqualsBuilder()
+                .append(getUuid(), sale.getUuid())
+                .append(getSaleTime(), sale.getSaleTime())
+                .append(getAmount(), sale.getAmount())
+                .append(getEmployee(), sale.getEmployee())
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(getId()).append(getUuid()).append(getSaleTime()).append(getAmount()).append(getEmployee()).toHashCode();
+        return new HashCodeBuilder(17, 37)
+                .append(getUuid())
+                .append(getSaleTime())
+                .append(getAmount())
+                .append(getEmployee())
+                .toHashCode();
     }
 
     @Override

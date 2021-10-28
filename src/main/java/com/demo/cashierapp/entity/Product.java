@@ -3,6 +3,7 @@ package com.demo.cashierapp.entity;
 import lombok.*;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -13,7 +14,6 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRODUCT_SEQ_GEN")
@@ -82,5 +82,21 @@ public class Product {
                 .append(getCostPrice())
                 .append(getSalePrice())
                 .toHashCode();
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("id", id)
+                .append("supplier", supplier)
+                .append("brand", brand)
+                .append("barcode", barcode)
+                .append("productName", productName)
+                .append("productDescription", productDescription)
+                .append("quantity", quantity)
+                .append("unitOfMeasurement", unitOfMeasurement)
+                .append("costPrice", costPrice)
+                .append("salePrice", salePrice)
+                .toString();
     }
 }

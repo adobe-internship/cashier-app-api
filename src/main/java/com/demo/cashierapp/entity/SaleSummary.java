@@ -40,13 +40,15 @@ public class SaleSummary {
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(getId()).append(getSoldProduct()).append(getSale()).toHashCode();
+        return new HashCodeBuilder(17, 37)
+                .append(getSoldProduct())
+                .append(getSale())
+                .toHashCode();
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .append("Id", Id)
                 .append("soldProduct", soldProduct)
                 .append("sale", sale)
                 .toString();
