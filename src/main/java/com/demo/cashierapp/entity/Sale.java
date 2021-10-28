@@ -1,11 +1,16 @@
 package com.demo.cashierapp.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -14,7 +19,8 @@ import java.util.UUID;
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString
+@JsonIgnoreProperties({"saleSummaryList"})
+
 public class Sale {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SALE_SEQ_GEN")
@@ -22,20 +28,20 @@ public class Sale {
     private Long Id;
 
     @Column(name = "uuid")
-    private UUID uuid = UUID.randomUUID();
+    private String uuid = UUID.randomUUID().toString();
 
     @Column(name = "sale_date_time")
-    private Date saleTime = new Date();
+    private LocalDateTime saleTime = LocalDateTime.now();
 
     @Column(name = "amount")
-    private double amount;
+    private BigDecimal amount;
 
     @OneToOne
     @JoinColumn(name="employee_id", referencedColumnName = "id")
     private Employee employee;
 
-    @OneToOne(mappedBy = "sale")
-    private SaleProductInfo saleProductInfo;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "sale")
+    private List<SaleSummary> saleSummaryList;
 
     @Override
     public boolean equals(Object o) {
@@ -45,11 +51,23 @@ public class Sale {
 
         Sale sale = (Sale) o;
 
-        return new EqualsBuilder().append(amount, sale.amount).append(Id, sale.Id).append(uuid, sale.uuid).append(saleTime, sale.saleTime).append(employee, sale.employee).append(saleProductInfo, sale.saleProductInfo).isEquals();
+        return new EqualsBuilder().append(getId(), sale.getId()).append(getUuid(), sale.getUuid()).append(getSaleTime(), sale.getSaleTime()).append(getAmount(), sale.getAmount()).append(getEmployee(), sale.getEmployee()).isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(Id).append(uuid).append(saleTime).append(amount).append(employee).append(saleProductInfo).toHashCode();
+        return new HashCodeBuilder(17, 37).append(getId()).append(getUuid()).append(getSaleTime()).append(getAmount()).append(getEmployee()).toHashCode();
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("Id", Id)
+                .append("uuid", uuid)
+                .append("saleTime", saleTime)
+                .append("amount", amount)
+                .append("employee", employee)
+                .append("saleSummaryList", saleSummaryList)
+                .toString();
     }
 }
