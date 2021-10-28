@@ -26,43 +26,12 @@ public class LoadDatabase {
         return args -> {
 
 //            EMPLOYEES
-            log.info("Preloading " + employeeService.create(
-                            new CreateEmployeeRequestModel(
-                                    "ruzanna",
-                                    "Ruzanna",
-                                    "Zohrabyan",
-                                    "Q!w2e3r4",
-                                    Arrays.asList(Role.ROLE_CASHIER)
-                            )
-                    )
-            );
-
-            log.info("Preloading " + employeeService.create(
-                            new CreateEmployeeRequestModel(
-                                    "julieta",
-                                    "Julieta",
-                                    "Aghakaryan",
-                                    "Q!w2e3r4",
-                                    Arrays.asList(Role.ROLE_ADMIN)
-                            )
-                    )
-            );
 
             log.info("Preloading " + employeeService.create(
                             new CreateEmployeeRequestModel(
                                     "marina",
                                     "Marina",
                                     "Zakaryan",
-                                    "Q!w2e3r4",
-                                    Arrays.asList(Role.ROLE_ADMIN)
-                            )
-                    )
-            );
-            log.info("Preloading " + employeeService.create(
-                            new CreateEmployeeRequestModel(
-                                    "ruben",
-                                    "Ruben",
-                                    "Balayan",
                                     "Q!w2e3r4",
                                     Arrays.asList(Role.ROLE_ADMIN)
                             )
