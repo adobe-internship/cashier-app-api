@@ -8,14 +8,14 @@ import com.demo.cashierapp.exception.ErrorSubtype;
 import com.demo.cashierapp.exception.types.EmployeeValidationExceptionRequest;
 import com.demo.cashierapp.model.apiService.authentication.AuthenticatedEmployeeResponseModel;
 import com.demo.cashierapp.model.apiService.authentication.EmployeeAuthenticationRequestModel;
+import com.demo.cashierapp.security.jwt.SecurityConst;
 import com.demo.cashierapp.service.employee.EmployeeService;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.security.Keys;
+import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Component;
 
-import java.security.Key;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -39,13 +39,12 @@ public class AuthenticationApiServiceImpl implements AuthenticationApiService {
             throw new EmployeeValidationExceptionRequest("Validation Error", errorSubtypes);
         }
         final List<EmployeeRole> roles = employee.getRoles();
-        Key key = Keys.hmacShaKeyFor("-Z6-BFxF3LHYb6NZ5jn4zJGHZ0T-EMnC5-hz-4gknvs".getBytes());
         String token = Jwts.builder()
                 .claim("authorities", roles.stream().map(role -> role.getRole().name()).collect(Collectors.toList()))
                 .claim("username", employee.getUsername())
                 .claim("firstName", employee.getFirstName())
                 .claim("lastName", employee.getLastName())
-                .signWith(key)
+                .signWith(SecurityConst.KEY)
                 .compact();
         final AuthenticatedEmployeeResponseModel responseModel = new AuthenticatedEmployeeResponseModel();
         responseModel.setToken(token);
