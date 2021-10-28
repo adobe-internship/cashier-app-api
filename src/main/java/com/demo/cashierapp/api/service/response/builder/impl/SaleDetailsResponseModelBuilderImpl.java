@@ -19,10 +19,9 @@ public class SaleDetailsResponseModelBuilderImpl implements SaleDetailsResponseM
     public SaleDetailsResponseModel build(String uuid) {
         final Sale savedSale = saleService.getSaleByUUID(uuid);
         final SaleDetailsResponseModel model = new SaleDetailsResponseModel();
-        model.setUuid(savedSale.getUuid());
-        model.setEmployee(savedSale.getEmployee());
-        model.setSaleSummaryList(savedSale.getSaleSummaryList());
         model.setAmount(savedSale.getAmount());
+        model.setUuid(savedSale.getUuid());
+        model.setUsername(savedSale.getEmployee().getUsername());
         model.setDateTime(savedSale.getSaleTime());
 
         return model;

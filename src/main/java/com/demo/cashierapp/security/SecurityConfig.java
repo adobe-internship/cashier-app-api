@@ -12,12 +12,13 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf()
-                .and()
-                .cors().disable()
+        http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/login").anonymous()
-                .antMatchers("/employee").hasRole("ADMIN")
+                .antMatchers("/employee/delete").hasRole("ADMIN")
+                .antMatchers("/product/").hasRole("ADMIN")
+                .antMatchers("/product").hasRole("ADMIN")
+                .antMatchers("/supplier/").hasRole("ADMIN")
                 .and()
                 .addFilterBefore(new JwtAuthorization(), BasicAuthenticationFilter.class)
                 .logout().permitAll();

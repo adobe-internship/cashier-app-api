@@ -73,6 +73,14 @@ public class ProductApiServiceImpl implements ProductApiService {
         productService.deleteProductByBarcode(barcode);
     }
 
+    @Override
+    public ProductDetailsResponseModel getByBarcode(String barcode) {
+        checkProductByBarcode(barcode);
+        Product product =  productService.getByBarcode(barcode);
+        return productResponseBuilder.build(product.getBarcode());
+
+    }
+
     private void checkProductByBarcode(String barcode) {
         final List<ErrorSubtype> errors = productValidator.validate(barcode);
         if (!errors.isEmpty()) {

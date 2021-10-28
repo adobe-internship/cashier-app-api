@@ -22,5 +22,8 @@ public interface ProductService {
     Product update(UpdateProductParams updateProductParams);
 
     Product buyProduct(BuyProductRequestModel model);
+
     void returnProduct(ReturnProductRequestModel model);
+
+    Product getByBarcode(String barcode);
 }

@@ -43,4 +43,8 @@ public class ProductController {
     public void returnProduct(@RequestBody ReturnProductRequestModel requestModel) {
         productApiService.returnProduct(requestModel);
     }
+    @GetMapping("/{barcode}")
+    public ProductDetailsResponseModel getProductByBarcode(@PathVariable String barcode){
+        return  productApiService.getByBarcode(barcode);
+    }
 }

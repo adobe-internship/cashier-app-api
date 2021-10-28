@@ -16,4 +16,6 @@ public interface ProductApiService {
     void returnProduct(ReturnProductRequestModel model);
 
     void deleteByBarcode(String barcode);
+
+    ProductDetailsResponseModel getByBarcode(String barcode);
 }

@@ -45,9 +45,9 @@ public class ProductValidatorImpl implements ProductValidator {
         if (StringUtils.isEmpty(requestModel.getUnitOfMeasurement())) {
             errors.add(ErrorSubtype.MISSING_MEASUREMENT);
         }
-        if (requestModel.getCostPrice().compareTo(BigDecimal.ZERO) < 0 || requestModel.getSalePrice().compareTo(BigDecimal.ZERO) < 0) {
-            errors.add(ErrorSubtype.NEGATIVE_VALUE);
-        }
+//        if (requestModel.getCostPrice().compareTo(BigDecimal.ZERO) < 0 || requestModel.getSalePrice().compareTo(BigDecimal.ZERO) < 0) {
+//            errors.add(ErrorSubtype.NEGATIVE_VALUE);
+//        }
         return errors;
     }
 

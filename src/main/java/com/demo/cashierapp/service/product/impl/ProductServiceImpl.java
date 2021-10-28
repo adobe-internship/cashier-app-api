@@ -98,4 +98,10 @@ public class ProductServiceImpl implements ProductService {
         productRepository.save(product);
     }
 
+    @Override
+    public Product getByBarcode(String barcode) {
+        final Product product = this.getProductByBarcode(barcode);
+        return productRepository.getById(product.getId());
+    }
+
 }

@@ -32,7 +32,7 @@ public class LoadDatabase {
                                     "Ruzanna",
                                     "Zohrabyan",
                                     "Q!w2e3r4",
-                                    Arrays.asList(Role.ROLE_ADMIN)
+                                    Arrays.asList(Role.ROLE_CASHIER)
                             )
                     )
             );
@@ -89,6 +89,70 @@ public class LoadDatabase {
                             )
                     )
             );
+            log.info("Preloading " + supplierService.create(
+                            new CreateSupplierRequestModel(
+                                    "Alpen Gold",
+                                    "Armine Srapyan",
+                                    "20 Khorenatsi str., Yerevan, Armenia",
+                                    "099876556"
+                            )
+                    )
+            );
+            log.info("Preloading " + supplierService.create(
+                            new CreateSupplierRequestModel(
+                                    "Kleopatra",
+                                    "Srapyon Gasparyan",
+                                    "99/2 Moskovyan str., Yerevan, Armenia",
+                                    "099871232"
+                            )
+                    )
+            );
+            log.info("Preloading " + supplierService.create(
+                            new CreateSupplierRequestModel(
+                                    "Lori",
+                                    "Vazgen Epremyan",
+                                    "12 Nar-Dos str., Yerevan, Armenia",
+                                    "055675412"
+                            )
+                    )
+            );
+            log.info("Preloading " + supplierService.create(
+                            new CreateSupplierRequestModel(
+                                    "Araqs",
+                                    "Aram Gevorgyan",
+                                    "10 Vardananc str., Hrazdan, Armenia",
+                                    "096778899"
+                            )
+                    )
+            );
+            log.info("Preloading " + supplierService.create(
+                            new CreateSupplierRequestModel(
+                                    "Marianna",
+                                    "Mariam Tumanyan",
+                                    "26 Tigran Mets str., Yerevan, Armenia",
+                                    "091233244"
+                            )
+                    )
+            );
+            log.info("Preloading " + supplierService.create(
+                            new CreateSupplierRequestModel(
+                                    "Calve",
+                                    "Tigran Tumanyan",
+                                    "20 Charents str., Yerevan, Armenia",
+                                    "055676555"
+                            )
+                    )
+            );
+
+            log.info("Preloading " + supplierService.create(
+                            new CreateSupplierRequestModel(
+                                    "Byuregh",
+                                    "Vahagn Ghambaryan",
+                                    "54 Tigran Mets str., Yerevan, Armenia",
+                                    "099665423"
+                            )
+                    )
+            );
 
 //            PRODUCTS
             log.info("Preloading " + productService.create(
@@ -102,6 +166,203 @@ public class LoadDatabase {
                                     "peace",
                                     new BigDecimal(100),
                                     new BigDecimal(150)
+                            )
+                    )
+            );
+            log.info("Preloading " + productService.create(
+                            new CreateProductRequestModel(
+                                    "Marianna",
+                                    "Marianna",
+                                    "85454443",
+                                    "Matsun",
+                                    "Matsun, 500ml",
+                                    20,
+                                    "peace",
+                                    new BigDecimal(395),
+                                    new BigDecimal(470)
+                            )
+                    )
+            );
+            log.info("Preloading " + productService.create(
+                            new CreateProductRequestModel(
+                                    "Byuregh",
+                                    "Byuregh",
+                                    "85487623",
+                                    "Water",
+                                    "Water, 500ml",
+                                    150,
+                                    "peace",
+                                    new BigDecimal(105),
+                                    new BigDecimal(150)
+                            )
+                    )
+            );
+            log.info("Preloading " + productService.create(
+                            new CreateProductRequestModel(
+                                    "Byuregh",
+                                    "Byuregh",
+                                    "85487683",
+                                    "Water",
+                                    "Water, 1l",
+                                    67,
+                                    "peace",
+                                    new BigDecimal(145),
+                                    new BigDecimal(190)
+                            )
+                    )
+            );
+            log.info("Preloading " + productService.create(
+                            new CreateProductRequestModel(
+                                    "Byuregh",
+                                    "Byuregh",
+                                    "85487624",
+                                    "Water",
+                                    "Water, 1.5l",
+                                    34,
+                                    "peace",
+                                    new BigDecimal(200),
+                                    new BigDecimal(230)
+                            )
+                    )
+            );
+
+            log.info("Preloading " + productService.create(
+                            new CreateProductRequestModel(
+                                    "Marianna",
+                                    "Marianna",
+                                    "85454487",
+                                    "Milk",
+                                    "Cow milk, 1l",
+                                    15,
+                                    "litre",
+                                    new BigDecimal(415),
+                                    new BigDecimal(500)
+                            )
+                    )
+            );
+            log.info("Preloading " + productService.create(
+                            new CreateProductRequestModel(
+                                    "Marianna",
+                                    "Marianna",
+                                    "85454889",
+                                    "Milk",
+                                    "Milk, 500ml",
+                                    10,
+                                    "peace",
+                                    new BigDecimal(285),
+                                    new BigDecimal(320)
+                            )
+                    )
+            );
+            log.info("Preloading " + productService.create(
+                            new CreateProductRequestModel(
+                                    "Marianna",
+                                    "Marianna",
+                                    "85454888",
+                                    "Cottage cheese",
+                                    "Cottage cheese, 100g",
+                                    15,
+                                    "peace",
+                                    new BigDecimal(175),
+                                    new BigDecimal(300)
+                            )
+                    )
+            );
+            log.info("Preloading " + productService.create(
+                            new CreateProductRequestModel(
+                                    "Marianna",
+                                    "Marianna",
+                                    "85454777",
+                                    "Cottage cheese",
+                                    "Cottage cheese, 200g",
+                                    12,
+                                    "peace",
+                                    new BigDecimal(295),
+                                    new BigDecimal(370)
+                            )
+                    )
+            );
+            log.info("Preloading " + productService.create(
+                            new CreateProductRequestModel(
+                                    "Marianna",
+                                    "Marianna",
+                                    "85423177",
+                                    "Sour cream",
+                                    "Sour cream, 500g",
+                                    15,
+                                    "peace",
+                                    new BigDecimal(475),
+                                    new BigDecimal(560)
+                            )
+                    )
+            );
+            log.info("Preloading " + productService.create(
+                            new CreateProductRequestModel(
+                                    "Marianna",
+                                    "Marianna",
+                                    "89344321",
+                                    "Sour cream",
+                                    "Sour cream, 250g",
+                                    15,
+                                    "peace",
+                                    new BigDecimal(265),
+                                    new BigDecimal(380)
+                            )
+                    )
+            );
+            log.info("Preloading " + productService.create(
+                            new CreateProductRequestModel(
+                                    "Calve",
+                                    "Calve",
+                                    "85454879",
+                                    "Mayonnaise",
+                                    "Mayonnaise, 500g",
+                                    15,
+                                    "peace",
+                                    new BigDecimal(385),
+                                    new BigDecimal(410)
+                            )
+                    )
+            );
+            log.info("Preloading " + productService.create(
+                            new CreateProductRequestModel(
+                                    "Calve",
+                                    "Calve",
+                                    "85454809",
+                                    "Ketchup",
+                                    "Ketchup, 500g",
+                                    20,
+                                    "peace",
+                                    new BigDecimal(345),
+                                    new BigDecimal(420)
+                            )
+                    )
+            );
+            log.info("Preloading " + productService.create(
+                            new CreateProductRequestModel(
+                                    "Araqs",
+                                    "Araqs",
+                                    "88412732",
+                                    "Egg",
+                                    "Chicken egg",
+                                    200,
+                                    "peace",
+                                    new BigDecimal(30),
+                                    new BigDecimal(50)
+                            )
+                    )
+            );
+            log.info("Preloading " + productService.create(
+                            new CreateProductRequestModel(
+                                    "Lori",
+                                    "Lori",
+                                    "87289312",
+                                    "Lori cheese",
+                                    "Lori salted cheese",
+                                    20,
+                                    "kg",
+                                    new BigDecimal(1800),
+                                    new BigDecimal(2100)
                             )
                     )
             );
@@ -121,8 +382,40 @@ public class LoadDatabase {
                     )
             );
 
+            log.info("Preloading" + productService.create(
+                            new CreateProductRequestModel(
+                                    "Alpen Gold",
+                                    "Alpen Gold",
+                                    "7622201450564",
+                                    "Chocalate bar",
+                                    "Milk chocolate",
+                                    20,
+                                    "peace",
+                                    new BigDecimal(360),
+                                    new BigDecimal(480)
+
+                            )
+                    )
+            );
+            log.info("Preloading" + productService.create(
+                            new CreateProductRequestModel(
+                                    "Kleopatra",
+                                    "Jino",
+                                    "6922868285969",
+                                    "Skincare Wipes",
+                                    "10 sheets",
+                                    10,
+                                    "peace",
+                                    new BigDecimal(100),
+                                    new BigDecimal(120)
+
+                            )
+                    )
+            );
+
         };
     }
 
 
 }
+

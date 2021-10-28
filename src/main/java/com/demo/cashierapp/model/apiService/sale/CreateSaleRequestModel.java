@@ -17,6 +17,8 @@ import java.util.List;
 public class CreateSaleRequestModel  {
     @JsonProperty("username")
     private String employeeUsername;
+    @JsonProperty("totalOrderSum")
     private BigDecimal amount;
+    @JsonProperty("orderList")
     private List<CreateSoldProductsRequestModel> soldProducts;
 }

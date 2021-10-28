@@ -18,7 +18,6 @@ import java.util.List;
 public class SaleDetailsResponseModel{
     private String uuid;
     private LocalDateTime dateTime;
-    private Employee employee;
+    private String username;
     private BigDecimal amount;
-    private List<SaleSummary> saleSummaryList;
 }
