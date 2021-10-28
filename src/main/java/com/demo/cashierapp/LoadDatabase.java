@@ -132,7 +132,7 @@ public class LoadDatabase {
                                     "Bajak Vanilayin",
                                     "Ice Cream, Bajak Vanilayin",
                                     50,
-                                    "peace",
+                                    "piece",
                                     new BigDecimal(100),
                                     new BigDecimal(150)
                             )
@@ -146,7 +146,7 @@ public class LoadDatabase {
                                     "Matsun",
                                     "Matsun, 500ml",
                                     20,
-                                    "peace",
+                                    "piece",
                                     new BigDecimal(395),
                                     new BigDecimal(470)
                             )
@@ -160,7 +160,7 @@ public class LoadDatabase {
                                     "Water",
                                     "Water, 500ml",
                                     150,
-                                    "peace",
+                                    "piece",
                                     new BigDecimal(105),
                                     new BigDecimal(150)
                             )
@@ -174,7 +174,7 @@ public class LoadDatabase {
                                     "Water",
                                     "Water, 1l",
                                     67,
-                                    "peace",
+                                    "piece",
                                     new BigDecimal(145),
                                     new BigDecimal(190)
                             )
@@ -188,7 +188,7 @@ public class LoadDatabase {
                                     "Water",
                                     "Water, 1.5l",
                                     34,
-                                    "peace",
+                                    "piece",
                                     new BigDecimal(200),
                                     new BigDecimal(230)
                             )
@@ -217,7 +217,7 @@ public class LoadDatabase {
                                     "Milk",
                                     "Milk, 500ml",
                                     10,
-                                    "peace",
+                                    "piece",
                                     new BigDecimal(285),
                                     new BigDecimal(320)
                             )
@@ -231,7 +231,7 @@ public class LoadDatabase {
                                     "Cottage cheese",
                                     "Cottage cheese, 100g",
                                     15,
-                                    "peace",
+                                    "piece",
                                     new BigDecimal(175),
                                     new BigDecimal(300)
                             )
@@ -245,7 +245,7 @@ public class LoadDatabase {
                                     "Cottage cheese",
                                     "Cottage cheese, 200g",
                                     12,
-                                    "peace",
+                                    "piece",
                                     new BigDecimal(295),
                                     new BigDecimal(370)
                             )
@@ -259,7 +259,7 @@ public class LoadDatabase {
                                     "Sour cream",
                                     "Sour cream, 500g",
                                     15,
-                                    "peace",
+                                    "piece",
                                     new BigDecimal(475),
                                     new BigDecimal(560)
                             )
@@ -273,7 +273,7 @@ public class LoadDatabase {
                                     "Sour cream",
                                     "Sour cream, 250g",
                                     15,
-                                    "peace",
+                                    "piece",
                                     new BigDecimal(265),
                                     new BigDecimal(380)
                             )
@@ -287,7 +287,7 @@ public class LoadDatabase {
                                     "Mayonnaise",
                                     "Mayonnaise, 500g",
                                     15,
-                                    "peace",
+                                    "piece",
                                     new BigDecimal(385),
                                     new BigDecimal(410)
                             )
@@ -301,7 +301,7 @@ public class LoadDatabase {
                                     "Ketchup",
                                     "Ketchup, 500g",
                                     20,
-                                    "peace",
+                                    "piece",
                                     new BigDecimal(345),
                                     new BigDecimal(420)
                             )
@@ -315,7 +315,7 @@ public class LoadDatabase {
                                     "Egg",
                                     "Chicken egg",
                                     200,
-                                    "peace",
+                                    "piece",
                                     new BigDecimal(30),
                                     new BigDecimal(50)
                             )
@@ -344,7 +344,7 @@ public class LoadDatabase {
                                     "Aghi dzoghik",
                                     "Aghi dzoghik, Daroink",
                                     100,
-                                    "peace",
+                                    "piece",
                                     new BigDecimal(150),
                                     new BigDecimal(220)
                             )
@@ -359,7 +359,7 @@ public class LoadDatabase {
                                     "Chocalate bar",
                                     "Milk chocolate",
                                     20,
-                                    "peace",
+                                    "piece",
                                     new BigDecimal(360),
                                     new BigDecimal(480)
 
@@ -374,7 +374,7 @@ public class LoadDatabase {
                                     "Skincare Wipes",
                                     "10 sheets",
                                     10,
-                                    "peace",
+                                    "piece",
                                     new BigDecimal(100),
                                     new BigDecimal(120)
 
