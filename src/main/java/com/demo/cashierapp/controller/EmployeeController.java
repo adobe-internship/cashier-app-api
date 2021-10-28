@@ -4,6 +4,7 @@ import com.demo.cashierapp.api.service.employee.impl.EmployeeApiServiceImpl;
 import com.demo.cashierapp.model.apiService.employee.CreateEmployeeRequestModel;
 import com.demo.cashierapp.model.apiService.employee.EmployeeDetailsResponseModel;
 import com.demo.cashierapp.model.apiService.employee.UpdateEmployeeRequestModel;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
